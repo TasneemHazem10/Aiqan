@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "أيقان",
+    "slug": "aiqan",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1A1A1A"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aiqan.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "يستخدم أيقان موقعك لأوقات الصلاة واتجاه القبلة",
+        "NSLocationAlwaysUsageDescription": "يستخدم أيقان موقعك لأوقات الصلاة واتجاه القبلة",
+        "NSMicrophoneUsageDescription": "يستخدم أيقان الميكروفون لتدريب الحفظ",
+        "UIBackgroundModes": ["audio", "fetch", "location", "remote-notification"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0E2B22"
+      },
+      "package": "com.aiqan.app",
+      "permissions": [
+        "RECORD_AUDIO",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "POST_NOTIFICATIONS"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-location",
+      "expo-notifications",
+      [
+        "expo-av",
+        {
+          "microphonePermission": "اسمح لأيقان بالوصول إلى الميكروفون لتدريب الحفظ"
+        }
+      ]
+    ],
+    "extra": {
+      "apiBaseUrl": "http://192.168.100.8:5000/api",
+      "openRouterApiKey": ""
+    }
+  }
+}

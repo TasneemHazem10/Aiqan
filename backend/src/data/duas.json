@@ -1,0 +1,252 @@
+[
+  {
+    "id": "sadness",
+    "name": "Sadness & Grief",
+    "arabicName": "الحزن والغم",
+    "icon": "heart-broken",
+    "color": "#EF4444",
+    "duas": [
+      {
+        "id": "sad_1",
+        "title": "Dua for Grief and Anxiety",
+        "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",
+        "transliteration": "Allahumma inni a'udhu bika minal-hammi wal-hazani, wal-'ajzi wal-kasali, wal-bukhli wal-jubni, wa dhala'id-dayni wa ghalabatir-rijal.",
+        "translation": "O Allah, I seek refuge in You from grief and sadness, from weakness and laziness, from miserliness and cowardice, from being overcome by debt and overpowered by men.",
+        "source": "Al-Bukhari 7/158",
+        "benefits": "Removes grief, anxiety and debt",
+        "timing": "Morning, Evening, or whenever feeling distressed"
+      },
+      {
+        "id": "sad_2",
+        "title": "The Prophet's Dua in Hardship",
+        "arabic": "لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",
+        "transliteration": "La ilaha illa anta subhanaka inni kuntu minaz-zalimeen.",
+        "translation": "There is none worthy of worship except You, glory be to You. Indeed, I have been among the wrongdoers.",
+        "source": "Al-Anbiya 21:87 - Quran",
+        "benefits": "Dua of Prophet Yunus (AS) in the belly of the whale. Whoever supplicates with it for anything, Allah will answer.",
+        "timing": "Any time of distress or hardship"
+      }
+    ]
+  },
+  {
+    "id": "anxiety",
+    "name": "Anxiety & Stress",
+    "arabicName": "القلق والتوتر",
+    "icon": "wave",
+    "color": "#F59E0B",
+    "duas": [
+      {
+        "id": "anxiety_1",
+        "title": "Dua for Peace of Mind",
+        "arabic": "حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ",
+        "transliteration": "Hasbiyallahu la ilaha illa huwa, alayhi tawakkaltu wa huwa rabbul-arshil-azim.",
+        "translation": "Allah is sufficient for me. There is no deity except Him. On Him I have relied, and He is the Lord of the Great Throne.",
+        "source": "At-Tawbah 9:129 - Quran",
+        "benefits": "Whoever says this 7 times in the morning and evening, Allah will suffice him in whatever concerns him.",
+        "timing": "7 times morning and evening"
+      },
+      {
+        "id": "anxiety_2",
+        "title": "Seeking Refuge from Anxiety",
+        "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ نَفْساً بِكَ مُطْمَئِنَّةً، تُؤْمِنُ بِلِقَائِكَ، وَتَرْضَى بِقَضَائِكَ، وَتَقْنَعُ بِعَطَائِكَ",
+        "transliteration": "Allahumma inni as'aluka nafsan bika mutma'innatan, tu'minu biliqaa'ik, wa tarda biqada'ik, wa taqna'u bi'ata'ik.",
+        "translation": "O Allah, I ask You for a soul that is at peace with You, that believes in meeting You, that is content with Your decree, and satisfied with Your gift.",
+        "source": "Authentic Dua",
+        "benefits": "Brings peace and contentment to the heart",
+        "timing": "When feeling anxious or stressed"
+      }
+    ]
+  },
+  {
+    "id": "rizq",
+    "name": "Provision & Wealth",
+    "arabicName": "الرزق والبركة",
+    "icon": "coins",
+    "color": "#10B981",
+    "duas": [
+      {
+        "id": "rizq_1",
+        "title": "Dua for Increased Provision",
+        "arabic": "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
+        "transliteration": "Allahumma akfini bihalaalika an haramik, wa aghnini bifadlika amman siwaak.",
+        "translation": "O Allah, suffice me with what You have allowed instead of what You have forbidden, and make me independent of all others besides You.",
+        "source": "At-Tirmidhi 5/560",
+        "benefits": "Allah will provide you from halal and make you independent of others",
+        "timing": "Any time, especially after Fajr"
+      },
+      {
+        "id": "rizq_2",
+        "title": "Dua for Barakah in Rizq",
+        "arabic": "اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا، وَقِنَا عَذَابَ النَّارِ",
+        "transliteration": "Allahumma barik lana fima razaqtana, wa qina adhaban-nar.",
+        "translation": "O Allah, bless us in what You have provided for us and protect us from the punishment of the Fire.",
+        "source": "Ibn As-Sunni",
+        "benefits": "Brings blessing in provision",
+        "timing": "After meals"
+      }
+    ]
+  },
+  {
+    "id": "health",
+    "name": "Health & Recovery",
+    "arabicName": "الصحة والشفاء",
+    "icon": "heart-pulse",
+    "color": "#06B6D4",
+    "duas": [
+      {
+        "id": "health_1",
+        "title": "Dua for Healing",
+        "arabic": "اللَّهُمَّ رَبَّ النَّاسِ، أَذْهِبِ الْبَأْسَ، اشْفِهِ وَأَنْتَ الشَّافِي، لَا شِفَاءَ إِلَّا شِفَاؤُكَ، شِفَاءً لَا يُغَادِرُ سَقَمًا",
+        "transliteration": "Allahumma rabban-nas, adhhibil-ba's, ishfihi wa antas-shafi, la shifa'a illa shifa'uk, shifa'an la yughaddiru saqama.",
+        "translation": "O Allah, Lord of mankind, remove the affliction and heal, for You are the Healer. There is no healing except Your healing, a healing that leaves no ailment.",
+        "source": "Al-Bukhari 7/172",
+        "benefits": "A dua said for someone who is sick",
+        "timing": "When visiting the sick or being sick"
+      },
+      {
+        "id": "health_2",
+        "title": "Ruqyah Self-Healing",
+        "arabic": "بِاسْمِ اللَّهِ أَرْقِيكَ، مِنْ كُلِّ شَيْءٍ يُؤْذِيكَ، مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ، اللَّهُ يَشْفِيكَ",
+        "transliteration": "Bismillahi arqeek, min kulli shay'in yu'dheek, min sharri kulli nafsin aw ayni hasid, Allahu yashfeek.",
+        "translation": "In the name of Allah I perform Ruqya for you, from everything that is harming you, from the evil of every soul or envious eye, may Allah heal you.",
+        "source": "Muslim 4/1718",
+        "benefits": "Protection and healing from evil eye and illness",
+        "timing": "When sick or afflicted"
+      }
+    ]
+  },
+  {
+    "id": "forgiveness",
+    "name": "Forgiveness & Repentance",
+    "arabicName": "التوبة والاستغفار",
+    "icon": "refresh",
+    "color": "#8B5CF6",
+    "duas": [
+      {
+        "id": "forgive_1",
+        "title": "Sayyidul Istighfar - Master of Forgiveness",
+        "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ لَكَ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+        "transliteration": "Allahumma anta rabbi la ilaha illa ant, khalaqtani wa ana abduk, wa ana ala ahdika wa wa'dika mastata't, a'udhu bika min sharri ma sana't, abu'u laka bini'matika alayya, wa abu'u laka bidhanbi, faghfir li fa'innahu la yaghfirudh-dhunuba illa ant.",
+        "translation": "O Allah, You are my Lord. None has the right to be worshipped except You. You created me and I am Your slave. I am faithful to my covenant and my promise as much as I can. I seek refuge in You from the evil of what I have done. I acknowledge Your favor upon me and I acknowledge my sin, so forgive me, for verily none can forgive sins except You.",
+        "source": "Al-Bukhari 7/150",
+        "benefits": "Whoever recites this with firm belief in morning, and dies that evening enters Paradise. Same for evening.",
+        "timing": "Morning and Evening"
+      },
+      {
+        "id": "forgive_2",
+        "title": "Simple Istighfar",
+        "arabic": "أَسْتَغْفِرُ اللهَ وَأَتُوبُ إِلَيْهِ",
+        "transliteration": "Astaghfirullaha wa atubu ilayh.",
+        "translation": "I seek forgiveness from Allah and I repent to Him.",
+        "source": "Al-Bukhari 11/101, Muslim 4/2076",
+        "benefits": "The Prophet ﷺ would say this 100 times a day",
+        "timing": "100 times a day"
+      }
+    ]
+  },
+  {
+    "id": "marriage",
+    "name": "Marriage & Family",
+    "arabicName": "الزواج والأسرة",
+    "icon": "home",
+    "color": "#EC4899",
+    "duas": [
+      {
+        "id": "marriage_1",
+        "title": "Dua for a Righteous Spouse",
+        "arabic": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+        "transliteration": "Rabbana hab lana min azwajina wa dhurriyyatina qurrata a'yunin waj'alna lil-muttaqina imama.",
+        "translation": "Our Lord, grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous.",
+        "source": "Al-Furqan 25:74 - Quran",
+        "benefits": "Dua for a righteous family and spouse",
+        "timing": "Whenever making dua for family"
+      }
+    ]
+  },
+  {
+    "id": "exams",
+    "name": "Exams & Study",
+    "arabicName": "الامتحانات والدراسة",
+    "icon": "book",
+    "color": "#3B82F6",
+    "duas": [
+      {
+        "id": "exams_1",
+        "title": "Dua for Knowledge",
+        "arabic": "رَبِّ زِدْنِي عِلْمًا",
+        "transliteration": "Rabbi zidni ilma.",
+        "translation": "My Lord, increase me in knowledge.",
+        "source": "Ta-Ha 20:114 - Quran",
+        "benefits": "Dua for increase in knowledge and wisdom",
+        "timing": "Before studying or during exams"
+      },
+      {
+        "id": "exams_2",
+        "title": "Dua for Ease in Difficulty",
+        "arabic": "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي وَاحْلُلْ عُقْدَةً مِّن لِّسَانِي يَفْقَهُوا قَوْلِي",
+        "transliteration": "Rabbi ishrah li sadri wa yassir li amri wahlul uqdatan min lisani yafqahu qawli.",
+        "translation": "My Lord, expand for me my breast with ease and ease for me my task and untie the knot from my tongue that they may understand my speech.",
+        "source": "Ta-Ha 20:25-28 - Quran",
+        "benefits": "Dua of Musa (AS) - removes difficulty and aids speech",
+        "timing": "Before exams, presentations, or speaking publicly"
+      }
+    ]
+  },
+  {
+    "id": "success",
+    "name": "Success & Goals",
+    "arabicName": "النجاح والأهداف",
+    "icon": "star",
+    "color": "#F59E0B",
+    "duas": [
+      {
+        "id": "success_1",
+        "title": "Dua for All Good",
+        "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",
+        "transliteration": "Allahumma inni as'alukal-huda wat-tuqa wal-afafa wal-ghina.",
+        "translation": "O Allah, I ask You for guidance, piety, chastity and self-sufficiency.",
+        "source": "Muslim 4/2098",
+        "benefits": "Comprehensive dua that encompasses all good in life",
+        "timing": "Any time"
+      }
+    ]
+  },
+  {
+    "id": "protection",
+    "name": "Protection & Safety",
+    "arabicName": "الحفظ والأمان",
+    "icon": "shield",
+    "color": "#6366F1",
+    "duas": [
+      {
+        "id": "protect_1",
+        "title": "Morning Protection Dua",
+        "arabic": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+        "transliteration": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wala fis-sama'i wahuwa as-sami'ul-aleem.",
+        "translation": "In the name of Allah with Whose name nothing is harmed on earth nor in the heavens and He is All-Seer, All-Knower.",
+        "source": "Abu Dawud, At-Tirmidhi",
+        "benefits": "Complete protection throughout the day/night",
+        "timing": "3 times in the morning and evening"
+      }
+    ]
+  },
+  {
+    "id": "parents",
+    "name": "Parents & Family",
+    "arabicName": "الوالدين والأهل",
+    "icon": "users",
+    "color": "#84CC16",
+    "duas": [
+      {
+        "id": "parents_1",
+        "title": "Dua for Parents",
+        "arabic": "رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+        "transliteration": "Rabbi irhamhuma kama rabbayani sagheera.",
+        "translation": "My Lord, have mercy upon them as they brought me up when I was small.",
+        "source": "Al-Isra 17:24 - Quran",
+        "benefits": "A Quranic dua for our parents",
+        "timing": "Regularly, especially after prayers"
+      }
+    ]
+  }
+]

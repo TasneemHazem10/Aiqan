@@ -1,0 +1,2 @@
+Place theme images in backend/public/assets/ with names like kaaba.jpg, makkah.jpg, nature.jpg
+This file exists to ensure the folder can be created and later replaced by real assets.

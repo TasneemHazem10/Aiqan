@@ -1,0 +1,2 @@
+This folder will hold downloaded reciter audio files: backend/public/offline/<reciterId>/<surah>.mp3
+Create the folder backend/public/offline when running the backend or it will be created automatically at runtime.
