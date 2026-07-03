@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 import * as FileSystem from 'expo-file-system/legacy';
 import { get, post, patch, del } from '../utils/api';
-import { ENDPOINTS } from '../constants/api';
+import { ENDPOINTS, API_BASE } from '../constants/api';
 import { storeData, getData, KEYS } from '../utils/storage';
 import { VoiceRecordingData } from '../types';
 
@@ -75,8 +75,7 @@ export async function downloadCloudRecording(cloudUri: string, localId: string):
     const dest = RECORDINGS_DIR + `${localId}.wav`;
     await FileSystem.makeDirectoryAsync(RECORDINGS_DIR, { intermediates: true }).catch(() => {});
 
-    const apiBaseUrl = (await import('../constants/api')).API_BASE_URL;
-    const fullUrl = apiBaseUrl.replace('/api', '') + cloudUri;
+    const fullUrl = API_BASE + cloudUri;
 
     const token = await getData<string>(KEYS.TOKEN);
     const downloadResult = await FileSystem.downloadAsync(fullUrl, dest, {

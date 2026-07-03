@@ -16,6 +16,7 @@ const configApiUrl: string | undefined =
 const defaultUrl = 'http://localhost:5000/api';
 
 export const API_BASE_URL = envApiUrl || configApiUrl || defaultUrl;
+export const API_BASE = API_BASE_URL.replace('/api', '');
 
 export const ENDPOINTS = {
   // Auth

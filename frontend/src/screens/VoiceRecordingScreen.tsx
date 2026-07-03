@@ -14,7 +14,7 @@ import { useThemedStyles } from '../hooks/useThemedStyles';
 import { FONTS, FONT_SIZES, SPACING, RADIUS } from '../constants/theme';
 import { storeData, getData, KEYS } from '../utils/storage';
 import { get } from '../utils/api';
-import { ENDPOINTS, API_BASE_URL } from '../constants/api';
+import { ENDPOINTS, API_BASE } from '../constants/api';
 import { Surah, SurahWithAyahs, VoiceRecordingData } from '../types';
 import { getOfflineSurah } from '../services/offlineQuran';
 import { addDownload } from '../utils/downloads';
@@ -350,7 +350,7 @@ export default function VoiceRecordingScreen() {
     try {
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
       const source = rec.uri.startsWith('http') || rec.uri.startsWith('/')
-        ? { uri: rec.uri.startsWith('/') ? API_BASE_URL.replace('/api', '') + rec.uri : rec.uri }
+        ? { uri: rec.uri.startsWith('/') ? API_BASE + rec.uri : rec.uri }
         : { uri: rec.uri };
       const { sound } = await Audio.Sound.createAsync(source, { shouldPlay: true });
       soundRef.current = sound;

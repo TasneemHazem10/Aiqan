@@ -1,0 +1,40 @@
+# Auto detect text files and normalize to LF on commit
+* text=auto
+
+# Source code
+*.ts text
+*.tsx text
+*.js text
+*.jsx text
+*.json text
+*.css text
+*.html text
+*.md text
+
+# Shell scripts - keep LF
+*.sh text eol=lf
+
+# Batch files - keep CRLF
+*.bat text eol=crlf
+
+# Environment examples
+.env.example text
+
+# Images and binaries - don't touch
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.mp3 binary
+*.mp4 binary
+*.wav binary
+
+# Lock files
+yarn.lock -text
+package-lock.json -text
