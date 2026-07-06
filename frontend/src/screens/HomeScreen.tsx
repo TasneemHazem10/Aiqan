@@ -93,7 +93,7 @@ const QUICK_ACTIONS: Array<{
   { labelAr: 'الأدعية', labelEn: 'Duas', icon: 'hand-left', gradient: ['#2C2C2E', '#1C1C1E'] as [string, string], screen: 'Azkar', subScreen: 'DuaHome' },
   { labelAr: 'القبلة', labelEn: 'Qibla', icon: 'compass', gradient: ['#2C2C2E', '#1C1C1E'] as [string, string], screen: 'More', subScreen: 'Qibla' },
   { labelAr: 'تقدمي', labelEn: 'Progress', icon: 'bar-chart', gradient: ['#2C2C2E', '#1C1C1E'] as [string, string], screen: 'More', subScreen: 'Progress' },
-  { labelAr: 'أيقان AI', labelEn: 'Aiqan AI', icon: 'chatbubble-ellipses', gradient: ['#D4AF37', '#B8860B'] as [string, string], screen: 'More', subScreen: 'AiAssistant' },
+  { labelAr: 'إيقان AI', labelEn: 'Aiqan AI', icon: 'chatbubble-ellipses', gradient: ['#D4AF37', '#B8860B'] as [string, string], screen: 'More', subScreen: 'AiAssistant' },
 ];
 
 const PRAYERS_DISPLAY = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];

@@ -293,7 +293,7 @@ export async function getLocalResponse(
 
   if (!q) {
     return isAr
-      ? 'مرحباً! أنا أيقان AI. أستطيع مساعدتك في أي موضوع — المعرفة الإسلامية، العلوم، التكنولوجيا، التاريخ، الصحة، أو مجرد محادثة ودية. كيف أقدر أخدمك اليوم؟'
+      ? 'مرحباً! أنا إيقان AI. أستطيع مساعدتك في أي موضوع — المعرفة الإسلامية، العلوم، التكنولوجيا، التاريخ، الصحة، أو مجرد محادثة ودية. كيف أقدر أخدمك اليوم؟'
       : "Hey! I'm Aiqan AI. I can help with literally anything — Islamic knowledge, science, tech, history, health, or just a friendly chat. What's on your mind?";
   }
 
@@ -325,7 +325,7 @@ export async function getLocalResponse(
 
   if (m('your name', 'what is your name', 'what are you', 'who are you', 'من انت', 'ما اسمك', 'من أنت')) {
     return isAr
-      ? 'أنا أيقان AI، مساعدك الشخصي الذكي! أقدر أساعدك في أي موضوع — ديني، علمي، تقني، أو حتى مجرد صديق تشاركه أفكارك. أنا هنا عشان أكون مفيد لك، فأي شيء تحتاجه أنا موجود!'
+      ? 'أنا إيقان AI، مساعدك الشخصي الذكي! أقدر أساعدك في أي موضوع — ديني، علمي، تقني، أو حتى مجرد صديق تشاركه أفكارك. أنا هنا عشان أكون مفيد لك، فأي شيء تحتاجه أنا موجود!'
       : "I'm Aiqan AI, your personal smart assistant! I can help with literally any topic — Islamic, scientific, tech, or just be a friend to bounce ideas off. I'm here to be useful, so what do you need?";
   }
 
@@ -547,7 +547,7 @@ export async function getLocalResponse(
 
   if (m('arabic', 'عربي', 'learn arabic', 'تعلم', 'اللغة')) {
     return isAr
-      ? 'اللغة العربية لغة القرآن، وهي من أجمل اللغات!\n\n📝 نصايح للتعلم:\n🔤 ابدأ بالحروف العربية\n📖 تعلم كلمات الصلاة والأذكار اليومية\n🎧 استمع للقرآن بتجويد\n🗣️ حاول تتكلم ولو كلمات بسيطة\n📱 استخدم تطبيق أيقان للكلمة بكلمة\n\nحتى ١٠ دقائق يومياً تصنع فرق كبير مع الوقت.'
+      ? 'اللغة العربية لغة القرآن، وهي من أجمل اللغات!\n\n📝 نصايح للتعلم:\n🔤 ابدأ بالحروف العربية\n📖 تعلم كلمات الصلاة والأذكار اليومية\n🎧 استمع للقرآن بتجويد\n🗣️ حاول تتكلم ولو كلمات بسيطة\n📱 استخدم تطبيق إيقان للكلمة بكلمة\n\nحتى ١٠ دقائق يومياً تصنع فرق كبير مع الوقت.'
       : "Arabic is the language of the Quran — one of the most beautiful languages!\n\n📝 Tips for learning:\n🔤 Start with the Arabic alphabet\n📖 Learn words from your daily prayers\n🎧 Listen to Quran recitation\n🗣️ Try speaking, even simple words\n📱 Use the Aiqan app's word-by-word feature\n\nEven 10 minutes daily makes a huge difference over time.";
   }
 

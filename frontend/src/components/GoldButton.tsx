@@ -140,15 +140,15 @@ export default function GoldButton({
 function getContainerStyle(variant: string, radius: number, colors: Record<string, string>): ViewStyle {
   switch (variant) {
     case 'secondary':
-      return { backgroundColor: colors.buttonPrimary, borderRadius };
+      return { backgroundColor: colors.buttonPrimary, borderRadius: radius };
     case 'outline':
-      return { borderWidth: 1.5, borderColor: colors.buttonPrimary, borderRadius };
+      return { borderWidth: 1.5, borderColor: colors.buttonPrimary, borderRadius: radius };
     case 'ghost':
-      return { backgroundColor: colors.glassDark, borderRadius };
+      return { backgroundColor: colors.glassDark, borderRadius: radius };
     case 'danger':
-      return { backgroundColor: `${colors.error}18`, borderWidth: 1, borderColor: colors.error, borderRadius };
+      return { backgroundColor: `${colors.error}18`, borderWidth: 1, borderColor: colors.error, borderRadius: radius };
     default:
-      return { borderRadius };
+      return { borderRadius: radius };
   }
 }
 

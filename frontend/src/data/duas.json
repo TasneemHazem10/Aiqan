@@ -68,33 +68,6 @@
         "source": "Based on authentic supplications",
         "benefits": "Trusts knowledge to Allah for recall when needed",
         "timing": "After studying before an exam"
-      },
-      {
-        "id": "exams_8",
-        "title": "Dua for Clear Speech",
-        "arabic": "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي",
-        "translation": "My Lord, expand my chest and ease my task.",
-        "source": "Ta-Ha 20:25-26 - Quran",
-        "benefits": "Shortened version of Musa dua for ease",
-        "timing": "Before any difficult task"
-      },
-      {
-        "id": "exams_9",
-        "title": "Dua Before Entering an Exam",
-        "arabic": "رَبِّ أَدْخِلْنِي مُدْخَلَ صِدْقٍ وَأَخْرِجْنِي مُخْرَجَ صِدْقٍ وَاجْعَلْ لِي مِنْ لَدُنْكَ سُلْطَانًا نَصِيرًا",
-        "translation": "My Lord, cause me to enter a sound entrance and exit, and grant me supporting authority.",
-        "source": "Al-Isra 17:80 - Quran",
-        "benefits": "Dua for success in all entrances and exits",
-        "timing": "Before entering an exam hall"
-      },
-      {
-        "id": "exams_10",
-        "title": "Dua for Gratitude After Learning",
-        "arabic": "الْحَمْدُ لِلَّهِ الَّذِي بِنِعْمَتِهِ تَتِمُّ الصَّالِحَاتُ",
-        "translation": "All praise is for Allah by whose favor good deeds are completed.",
-        "source": "Based on authentic supplications",
-        "benefits": "Gratitude after completing a study session",
-        "timing": "After completing any study or exam"
       }
     ]
   },
@@ -176,24 +149,6 @@
         "source": "Based on Quran and Sunnah",
         "benefits": "Promotes unity and harmony in the family",
         "timing": "Daily, especially when there is tension"
-      },
-      {
-        "id": "marriage_9",
-        "title": "Dua for Entering a New Home",
-        "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذِهِ الدَّارِ وَخَيْرَ أَهْلِهَا",
-        "translation": "O Allah, I ask You for the good of this home and its people.",
-        "source": "Based on authentic supplications",
-        "benefits": "Blesses the new home and protects the family",
-        "timing": "When moving into a new home"
-      },
-      {
-        "id": "marriage_10",
-        "title": "Dua for Barakah in Marriage",
-        "arabic": "اللَّهُمَّ بَارِكْ لَنَا فِي أَهْلِنَا وَأَمْوَالِنَا",
-        "translation": "O Allah, bless us in our family and our wealth.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks blessing in family and provision",
-        "timing": "Regularly, especially after prayers"
       }
     ]
   },
@@ -383,15 +338,6 @@
         "source": "Al-Baqarah 2:250 - Quran",
         "benefits": "Seeks patience and steadfastness in hardship",
         "timing": "When facing trials"
-      },
-      {
-        "id": "sadness_10",
-        "title": "Dua for Tomorrow Worries",
-        "arabic": "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
-        "translation": "O Allah, suffice me with lawful over unlawful, enrich me by Your bounty.",
-        "source": "At-Tirmidhi, authentic",
-        "benefits": "Relieves worry about provision and future",
-        "timing": "Daily, especially after Fajr"
       }
     ]
   },
@@ -473,24 +419,6 @@
         "source": "Based on authentic supplications",
         "benefits": "Seeks ease and good outcomes",
         "timing": "At the start of any task"
-      },
-      {
-        "id": "anxiety_9",
-        "title": "Dua for Relief from Panic",
-        "arabic": "اللَّهُمَّ لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا",
-        "translation": "Our Lord, do not blame us if we forget or make a mistake.",
-        "source": "Al-Baqarah 2:286 - Quran",
-        "benefits": "Allah said I have done so when this was revealed",
-        "timing": "When worried about mistakes"
-      },
-      {
-        "id": "anxiety_10",
-        "title": "Dua for Inner Peace",
-        "arabic": "اللَّهُمَّ أَلِّفْ بَيْنَ قُلُوبِنَا وَأَصْلِحْ ذَاتَ بَيْنِنَا وَاهْدِنَا سُبُلَ السَّلَامِ",
-        "translation": "O Allah, unite our hearts, reconcile us, guide us to peace.",
-        "source": "Based on Quranic supplications",
-        "benefits": "Comprehensive dua for peace and unity",
-        "timing": "During times of confusion"
       }
     ]
   },
@@ -581,15 +509,6 @@
         "source": "Based on authentic supplications",
         "benefits": "Seeks true richness in knowledge and faith",
         "timing": "Daily, after Fajr"
-      },
-      {
-        "id": "rizq_10",
-        "title": "Dua for Contentment",
-        "arabic": "اللَّهُمَّ رَضِّنِي بِمَا قَسَمْتَ لِي حَتَّى لَا أَسْأَلَ أَحَدًا غَيْرَكَ",
-        "translation": "O Allah, make me content with what You allotted me.",
-        "source": "Based on authentic supplications",
-        "benefits": "Fosters reliance on Allah alone",
-        "timing": "Daily"
       }
     ]
   },
@@ -770,24 +689,6 @@
         "source": "Al-Baqarah 2:127 - Quran",
         "benefits": "Dua of Ibrahim building the Kaaba",
         "timing": "After completing any good deed"
-      },
-      {
-        "id": "success_9",
-        "title": "Dua for Wisdom in Speech",
-        "arabic": "اللَّهُمَّ صَيِّبْ قَوْلِي وَأَدِّبْ لِسَانِي وَاهْدِ قَلْبِي",
-        "translation": "O Allah, make my speech proper, discipline my tongue, guide my heart.",
-        "source": "Based on authentic supplications",
-        "benefits": "Wisdom in speech and action",
-        "timing": "Before speaking or presenting"
-      },
-      {
-        "id": "success_10",
-        "title": "Dua for Barakah in Efforts",
-        "arabic": "اللَّهُمَّ بَارِكْ لِي فِي عَمَلِي وَوَفِّقْنِي لِمَا تُحِبُّ",
-        "translation": "O Allah, bless my work and grant me success in what You love.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks blessing and alignment with Allah pleasure",
-        "timing": "Before starting work"
       }
     ]
   },
@@ -941,51 +842,6 @@
         "source": "An-Naml 27:19 - Quran",
         "benefits": "Dua of Sulayman (AS) for gratitude",
         "timing": "Daily"
-      },
-      {
-        "id": "parents_6",
-        "title": "Dua for Parents Acceptance",
-        "arabic": "اللَّهُمَّ ارْضَ عَنْ وَالِدَيَّ كَمَا رَضِيتَ عَنْ أَنْبِيَائِكَ",
-        "translation": "O Allah, be pleased with my parents as You are pleased with Your prophets.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks highest pleasure for parents",
-        "timing": "Daily, after every prayer"
-      },
-      {
-        "id": "parents_7",
-        "title": "Dua for Parents Good Deeds",
-        "arabic": "اللَّهُمَّ تَقَبَّلْ مِنْ وَالِدَيَّ صَالِحَ الْأَعْمَالِ",
-        "translation": "O Allah, accept the good deeds of my parents.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks acceptance of parents deeds",
-        "timing": "Daily"
-      },
-      {
-        "id": "parents_8",
-        "title": "Dua for Parents Guidance",
-        "arabic": "اللَّهُمَّ اهْدِ وَالِدَيَّ إِلَى صِرَاطِكَ الْمُسْتَقِيمِ",
-        "translation": "O Allah, guide my parents to Your straight path.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks guidance for parents",
-        "timing": "Daily"
-      },
-      {
-        "id": "parents_9",
-        "title": "Dua for Parents Health",
-        "arabic": "اللَّهُمَّ اشْفِ وَالِدَيَّ وَعَافِهِمَا وَأَذْهِبْ عَنْهُمَا الْبَأْسَ",
-        "translation": "O Allah, heal my parents and remove all harm from them.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks health for parents",
-        "timing": "When parents are ill"
-      },
-      {
-        "id": "parents_10",
-        "title": "Dua for Obedience to Parents",
-        "arabic": "رَبِّ اجْعَلْنِي مِنَ الْبَارِّينَ بِوَالِدَيَّ",
-        "translation": "My Lord, make me among those who are dutiful to their parents.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks ability to honor parents",
-        "timing": "Daily"
       }
     ]
   },
@@ -1049,42 +905,6 @@
         "source": "Based on authentic supplications",
         "benefits": "Seeks divine assistance in repayment",
         "timing": "Daily"
-      },
-      {
-        "id": "debt_7",
-        "title": "Dua for Barakah in Little",
-        "arabic": "اللَّهُمَّ بَارِكْ لِي فِيمَا رَزَقْتَنِي",
-        "translation": "O Allah, bless me in what You have provided me.",
-        "source": "Based on authentic supplications",
-        "benefits": "Makes little suffice",
-        "timing": "When income is limited"
-      },
-      {
-        "id": "debt_8",
-        "title": "Dua for a Way Out",
-        "arabic": "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ",
-        "translation": "Whoever fears Allah, He will make a way out and provide from unexpected sources.",
-        "source": "At-Talaq 65:2-3 - Quran",
-        "benefits": "Allah promises a way out for the righteous",
-        "timing": "When trapped in financial difficulties"
-      },
-      {
-        "id": "debt_9",
-        "title": "Dua for Contentment",
-        "arabic": "اللَّهُمَّ رَضِّنِي بِمَا قَسَمْتَ لِي",
-        "translation": "O Allah, make me content with what You allotted.",
-        "source": "Based on authentic supplications",
-        "benefits": "Fosters contentment",
-        "timing": "Daily"
-      },
-      {
-        "id": "debt_10",
-        "title": "Dua for Protection from Debt",
-        "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ",
-        "translation": "O Allah, I ask You for pardon and well-being in both worlds.",
-        "source": "Abu Dawud, Ibn Majah",
-        "benefits": "Overall well-being including financial health",
-        "timing": "Morning and evening"
       }
     ]
   },
@@ -1157,33 +977,6 @@
         "source": "Al-Bukhari, authentic",
         "benefits": "The Prophet would sleep on right side saying this",
         "timing": "When lying down"
-      },
-      {
-        "id": "sleep_8",
-        "title": "Dua for Nightmares Protection",
-        "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ وَالنَّارِ وَفِتْنَةِ الْمَحْيَا وَالْمَمَاتِ",
-        "translation": "O Allah, I seek refuge from punishment of grave, fire, and trials of life and death.",
-        "source": "Muslim, Sahih",
-        "benefits": "Protection from spiritual harms",
-        "timing": "After waking from nightmare"
-      },
-      {
-        "id": "sleep_9",
-        "title": "Dua for Peaceful Sleep",
-        "arabic": "اللَّهُمَّ أَنْزِلْ عَلَيْنَا سَكِينَةً وَأَمْنًا وَاجْعَلْ نَوْمَنَا مُبَارَكًا",
-        "translation": "O Allah, send tranquility and peace on us, make our sleep blessed.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks peaceful sleep",
-        "timing": "Before sleep"
-      },
-      {
-        "id": "sleep_10",
-        "title": "Dua for Waking at Night",
-        "arabic": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ",
-        "translation": "There is no god but Allah alone, no partner, His is the kingdom and all praise.",
-        "source": "Al-Bukhari",
-        "benefits": "Whoever wakes at night and says this, prayer is accepted",
-        "timing": "When waking up at night"
       }
     ]
   },
@@ -1238,51 +1031,6 @@
         "source": "Al-Bukhari",
         "benefits": "Whoever says this after Adhan gets Prophets intercession",
         "timing": "After hearing Adhan"
-      },
-      {
-        "id": "mosque_6",
-        "title": "Dua for Istiqamah",
-        "arabic": "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
-        "translation": "O Allah, help me to remember, thank, and worship You well.",
-        "source": "Abu Dawud, authentic",
-        "benefits": "Comprehensive dua for worship",
-        "timing": "After Fajr"
-      },
-      {
-        "id": "mosque_7",
-        "title": "Dua for Focus in Prayer",
-        "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْخُشُوعَ فِي الصَّلَاةِ",
-        "translation": "O Allah, I ask You for humility in prayer.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks focus in prayer",
-        "timing": "Before each prayer"
-      },
-      {
-        "id": "mosque_8",
-        "title": "Dua Between Prostrations",
-        "arabic": "اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَاهْدِنِي وَعَافِنِي وَارْزُقْنِي",
-        "translation": "O Allah, forgive me, have mercy, guide me, grant well-being, and provide.",
-        "source": "Abu Dawud, At-Tirmidhi",
-        "benefits": "Comprehensive dua during prayer",
-        "timing": "Between the two prostrations"
-      },
-      {
-        "id": "mosque_9",
-        "title": "Dua After Tashahhud",
-        "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ وَجَهَنَّمَ وَفِتْنَةِ الْمَحْيَا وَالْمَمَاتِ",
-        "translation": "O Allah, I seek refuge from punishment of grave, Hell, and trials.",
-        "source": "Muslim, Sahih",
-        "benefits": "The Prophet taught this before tasleem",
-        "timing": "After tashahhud, before tasleem"
-      },
-      {
-        "id": "mosque_10",
-        "title": "Dua for Night Prayer",
-        "arabic": "اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ نُورُ السَّمَاوَاتِ وَالْأَرْضِ",
-        "translation": "O Allah, to You is all praise. You are the light of the heavens and earth.",
-        "source": "Al-Bukhari",
-        "benefits": "The Prophet said this when waking for night prayer",
-        "timing": "When praying at night"
       }
     ]
   },
@@ -1364,24 +1112,6 @@
         "source": "Az-Zukhruf 43:13 - Quran",
         "benefits": "Quranic dua for any transport",
         "timing": "When boarding a vehicle"
-      },
-      {
-        "id": "travel_9",
-        "title": "Dua for Sea Travel",
-        "arabic": "بِسْمِ اللَّهِ مَجْرَاهَا وَمُرْسَاهَا إِنَّ رَبِّي لَغَفُورٌ رَّحِيمٌ",
-        "translation": "In Allah name is its sailing and anchorage. My Lord is Forgiving, Merciful.",
-        "source": "Hud 11:41 - Quran",
-        "benefits": "Dua of Nuh (AS) on the Ark",
-        "timing": "When traveling by sea"
-      },
-      {
-        "id": "travel_10",
-        "title": "Dua for New Moon",
-        "arabic": "اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْأَمْنِ وَالْإِيمَانِ وَالسَّلَامَةِ وَالْإِسْلَامِ",
-        "translation": "O Allah, bring this moon to us with security, faith, safety, and Islam.",
-        "source": "At-Tirmidhi, authentic",
-        "benefits": "Blessings for the new month",
-        "timing": "When seeing the new moon"
       }
     ]
   },
@@ -1472,15 +1202,6 @@
         "source": "Based on authentic supplications",
         "benefits": "Greatest honor on Judgment Day",
         "timing": "Daily"
-      },
-      {
-        "id": "jannah_10",
-        "title": "Dua for Good Ending",
-        "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ حُسْنَ الْخَاتِمَةِ",
-        "translation": "O Allah, I ask You for a good ending.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks to die in faith",
-        "timing": "Daily"
       }
     ]
   },
@@ -1526,60 +1247,6 @@
         "source": "Muslim",
         "benefits": "The Prophet said this for hosts",
         "timing": "After being hosted"
-      },
-      {
-        "id": "food_5",
-        "title": "Dua for Barakah in Food",
-        "arabic": "اللَّهُمَّ بَارِكْ لَنَا فِيهِ وَأَطْعِمْنَا خَيْرًا مِنْهُ",
-        "translation": "O Allah, bless it for us and feed us with better.",
-        "source": "Abu Dawud",
-        "benefits": "When food seems insufficient",
-        "timing": "When food is little"
-      },
-      {
-        "id": "food_6",
-        "title": "Dua After Drinking Milk",
-        "arabic": "اللَّهُمَّ بَارِكْ لَنَا فِيهِ وَزِدْنَا مِنْهُ",
-        "translation": "O Allah, bless it for us and give us more.",
-        "source": "Abu Dawud, At-Tirmidhi",
-        "benefits": "The Prophet said this after milk",
-        "timing": "After drinking milk"
-      },
-      {
-        "id": "food_7",
-        "title": "Dua for Iftar",
-        "arabic": "اللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ",
-        "translation": "O Allah, for You I fasted, with Your provision I break my fast.",
-        "source": "Abu Dawud, authentic",
-        "benefits": "Dua for breaking fast",
-        "timing": "At iftar time"
-      },
-      {
-        "id": "food_8",
-        "title": "Dua for Reciprocal Blessing",
-        "arabic": "اللَّهُمَّ أَطْعِمْ مَنْ أَطْعَمَنِي وَاسْقِ مَنْ سَقَانِي",
-        "translation": "O Allah, feed and give drink to those who fed and gave me drink.",
-        "source": "Muslim",
-        "benefits": "Dua of reciprocal blessing",
-        "timing": "After being hosted"
-      },
-      {
-        "id": "food_9",
-        "title": "Dua When Eating with Others",
-        "arabic": "اللَّهُمَّ اجْعَلْ طَعَامَنَا مُبَارَكًا",
-        "translation": "O Allah, make our food blessed.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks blessing for the meal",
-        "timing": "Before eating together"
-      },
-      {
-        "id": "food_10",
-        "title": "Dua at Someones Home",
-        "arabic": "أَفْطَرَ عِنْدَكُمُ الصَّائِمُونَ وَأَكَلَ طَعَامَكُمُ الْأَبْرَارُ وَصَلَّتْ عَلَيْكُمُ الْمَلَائِكَةُ",
-        "translation": "May the fasting break fast with you, righteous eat your food, angels bless you.",
-        "source": "Abu Dawud, authentic",
-        "benefits": "The Prophet taught this when hosted",
-        "timing": "When hosted for a meal"
       }
     ]
   },
@@ -1625,60 +1292,6 @@
         "source": "Abu Dawud, Ibn Majah",
         "benefits": "The Prophet said this when wind blew",
         "timing": "When strong winds blow"
-      },
-      {
-        "id": "weather_5",
-        "title": "Dua for Thunder and Lightning",
-        "arabic": "سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ وَالْمَلَائِكَةُ مِنْ خِيفَتِهِ",
-        "translation": "Glory to Him whom thunder glorifies and angels from fear of Him.",
-        "source": "Based on authentic supplications",
-        "benefits": "Glorifies Allah during storms",
-        "timing": "When hearing thunder"
-      },
-      {
-        "id": "weather_6",
-        "title": "Dua After Rain",
-        "arabic": "مُطِرْنَا بِفَضْلِ اللَّهِ وَرَحْمَتِهِ",
-        "translation": "We have received rain by the grace and mercy of Allah.",
-        "source": "Al-Bukhari",
-        "benefits": "Gratitude for rain",
-        "timing": "After it rains"
-      },
-      {
-        "id": "weather_7",
-        "title": "Dua When Seeing Clouds",
-        "arabic": "اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهَا",
-        "translation": "O Allah, we seek refuge from the evil within them.",
-        "source": "Based on authentic supplications",
-        "benefits": "Protection from harmful weather",
-        "timing": "When seeing dark clouds"
-      },
-      {
-        "id": "weather_8",
-        "title": "Dua During Storm",
-        "arabic": "اللَّهُمَّ لَا تَقْتُلْنَا بِغَضَبِكَ وَلَا تُهْلِكْنَا بِعَذَابِكَ",
-        "translation": "O Allah, do not kill us with Your anger or destroy us with punishment.",
-        "source": "Based on authentic supplications",
-        "benefits": "Protection during severe weather",
-        "timing": "During storms"
-      },
-      {
-        "id": "weather_9",
-        "title": "Dua for Heat Relief",
-        "arabic": "اللَّهُمَّ أَجِرْنِي مِنْ حَرِّ جَهَنَّمَ",
-        "translation": "O Allah, save me from the heat of Hellfire.",
-        "source": "Based on authentic supplications",
-        "benefits": "Relief from heat and protection from Hellfire",
-        "timing": "During extreme heat"
-      },
-      {
-        "id": "weather_10",
-        "title": "Dua When Seeing Moon",
-        "arabic": "اللَّهُ أَكْبَرُ اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْأَمْنِ وَالْإِيمَانِ",
-        "translation": "Allah is Greatest. O Allah, bring the moon with security and faith.",
-        "source": "At-Tirmidhi, authentic",
-        "benefits": "Blessings with the new moon",
-        "timing": "When seeing the crescent moon"
       }
     ]
   },
@@ -1724,60 +1337,6 @@
         "source": "Al-Bukhari (part of Istikhara)",
         "benefits": "Seeks what is truly good",
         "timing": "During Istikhara prayer"
-      },
-      {
-        "id": "istikhara_5",
-        "title": "Dua for Contentment with Decree",
-        "arabic": "اللَّهُمَّ رَضِّنِي بِقَضَائِكَ وَبَارِكْ لِي فِيمَا قُدِّرَ لِي",
-        "translation": "O Allah, make me content with Your decree and bless what is destined.",
-        "source": "Based on authentic supplications",
-        "benefits": "Peace with Allah decree",
-        "timing": "After outcome known"
-      },
-      {
-        "id": "istikhara_6",
-        "title": "Dua for Clarity",
-        "arabic": "اللَّهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ",
-        "translation": "O Allah, show us truth as truth and grant us to follow it.",
-        "source": "Based on authentic supplications",
-        "benefits": "Clarity between right and wrong",
-        "timing": "When unsure about decision"
-      },
-      {
-        "id": "istikhara_7",
-        "title": "Dua for Removing Confusion",
-        "arabic": "رَبِّ أَعِنِّي وَلَا تُعِنْ عَلَيَّ وَانْصُرْنِي وَلَا تَنْصُرْ عَلَيَّ",
-        "translation": "My Lord, help me, do not help against me. Grant me victory.",
-        "source": "At-Tirmidhi, authentic",
-        "benefits": "Seeks divine help",
-        "timing": "When confused"
-      },
-      {
-        "id": "istikhara_8",
-        "title": "Dua for Barakah in Choice",
-        "arabic": "اللَّهُمَّ بَارِكْ لِي فِيمَا اخْتَرْتُهُ وَارْضِنِي بِهِ",
-        "translation": "O Allah, bless me in what I chose and make me content with it.",
-        "source": "Based on authentic supplications",
-        "benefits": "Blessing in the chosen option",
-        "timing": "After making decision"
-      },
-      {
-        "id": "istikhara_9",
-        "title": "Dua of Ibrahim for Wisdom",
-        "arabic": "رَبِّ هَبْ لِي حُكْمًا وَأَلْحِقْنِي بِالصَّالِحِينَ",
-        "translation": "My Lord, grant me wisdom and join me with the righteous.",
-        "source": "Ash-Shu'ara 26:83 - Quran",
-        "benefits": "Dua of Ibrahim (AS) for wisdom",
-        "timing": "When seeking wisdom"
-      },
-      {
-        "id": "istikhara_10",
-        "title": "Dua for Opening Doors",
-        "arabic": "اللَّهُمَّ افْتَحْ لَنَا مِنْ أَبْوَابِ الْخَيْرِ وَالْبَرَكَةِ",
-        "translation": "O Allah, open for us the doors of goodness and blessing.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks opportunities and blessings",
-        "timing": "When waiting for a sign"
       }
     ]
   },
@@ -1850,33 +1409,6 @@
         "source": "Al-Mu'minun 23:28 - Quran",
         "benefits": "Gratitude for being saved",
         "timing": "After a difficult situation"
-      },
-      {
-        "id": "gratitude_8",
-        "title": "Dua for Pleasant Things",
-        "arabic": "اللَّهُمَّ لَكَ الْحَمْدُ عَلَى كُلِّ نِعْمَةٍ أَنْعَمْتَ بِهَا عَلَيْنَا",
-        "translation": "O Allah, to You is all praise for every blessing.",
-        "source": "Based on authentic supplications",
-        "benefits": "Acknowledges Allah as source of blessings",
-        "timing": "When seeing something beautiful"
-      },
-      {
-        "id": "gratitude_9",
-        "title": "Dua for Gratitude in Hardship",
-        "arabic": "الْحَمْدُ لِلَّهِ عَلَى كُلِّ حَالٍ",
-        "translation": "All praise is for Allah in every situation.",
-        "source": "Based on authentic supplications",
-        "benefits": "Gratitude even in difficulty",
-        "timing": "In all situations"
-      },
-      {
-        "id": "gratitude_10",
-        "title": "Dua of Paradise People",
-        "arabic": "الْحَمْدُ لِلَّهِ الَّذِي صَدَقَنَا وَعْدَهُ وَأَوْرَثَنَا الْأَرْضَ",
-        "translation": "All praise is for Allah who fulfilled His promise and made us inherit the land.",
-        "source": "Az-Zumar 39:74 - Quran",
-        "benefits": "Gratitude of Jannah people",
-        "timing": "When reflecting on Jannah"
       }
     ]
   },
@@ -1940,42 +1472,6 @@
         "source": "Al-Bukhari",
         "benefits": "Sunnah when sneezing",
         "timing": "When you sneeze"
-      },
-      {
-        "id": "gather_7",
-        "title": "Response to Sneezer",
-        "arabic": "يَرْحَمُكَ اللَّهُ",
-        "translation": "May Allah have mercy on you.",
-        "source": "Al-Bukhari",
-        "benefits": "Response to sneezer who says Alhamdulillah",
-        "timing": "When someone sneezes"
-      },
-      {
-        "id": "gather_8",
-        "title": "Dua Starting a Speech",
-        "arabic": "الْحَمْدُ لِلَّهِ نَحْمَدُهُ وَنَسْتَعِينُهُ وَنَسْتَغْفِرُهُ",
-        "translation": "All praise is for Allah, we praise, seek help, and ask forgiveness.",
-        "source": "Based on Prophet's khutbah style",
-        "benefits": "The Prophet began speeches with praise",
-        "timing": "When giving a speech"
-      },
-      {
-        "id": "gather_9",
-        "title": "Dua Seeing Afflicted",
-        "arabic": "الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي مِمَّا ابْتَلَاكَ بِهِ",
-        "translation": "All praise is for Allah who saved me from what afflicted you.",
-        "source": "At-Tirmidhi, authentic",
-        "benefits": "Gratitude for safety",
-        "timing": "When seeing someone afflicted"
-      },
-      {
-        "id": "gather_10",
-        "title": "Dua for Reconciliation",
-        "arabic": "اللَّهُمَّ أَصْلِحْ بَيْنَ الْإِخْوَةِ وَأَلِّفْ بَيْنَ الْقُلُوبِ",
-        "translation": "O Allah, reconcile between brothers and unite their hearts.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks harmony and unity",
-        "timing": "During disputes"
       }
     ]
   },
@@ -2012,69 +1508,6 @@
         "source": "Based on authentic supplications",
         "benefits": "Seeks both inner and outer beauty",
         "timing": "When looking in mirror"
-      },
-      {
-        "id": "cloth_4",
-        "title": "Dua When Looking in Mirror",
-        "arabic": "اللَّهُمَّ أَنْتَ حَسَّنْتَ خَلْقِي فَحَسِّنْ خُلُقِي",
-        "translation": "O Allah, You made my form beautiful, so beautify my character.",
-        "source": "Based on authentic supplications",
-        "benefits": "Reminds that character matters more than looks",
-        "timing": "When looking in mirror"
-      },
-      {
-        "id": "cloth_5",
-        "title": "Dua for Modesty",
-        "arabic": "اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي",
-        "translation": "O Allah, cover my faults and calm my fears.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeks modesty and protection",
-        "timing": "Daily"
-      },
-      {
-        "id": "cloth_6",
-        "title": "Dua for Taking Off Clothes",
-        "arabic": "بِسْمِ اللَّهِ",
-        "translation": "In the name of Allah.",
-        "source": "Based on authentic supplications",
-        "benefits": "Seeking Allah name when undressing",
-        "timing": "When removing clothes"
-      },
-      {
-        "id": "cloth_7",
-        "title": "Dua for Entering Bathroom",
-        "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",
-        "translation": "O Allah, I seek refuge in You from male and female devils.",
-        "source": "Al-Bukhari, Muslim",
-        "benefits": "Protection when entering restroom",
-        "timing": "When entering bathroom"
-      },
-      {
-        "id": "cloth_8",
-        "title": "Dua for Leaving Bathroom",
-        "arabic": "غُفْرَانَكَ",
-        "translation": "Your forgiveness, O Allah.",
-        "source": "Abu Dawud, At-Tirmidhi",
-        "benefits": "The Prophet said this when leaving",
-        "timing": "When leaving the bathroom"
-      },
-      {
-        "id": "cloth_9",
-        "title": "Dua for Giving Clothes to Others",
-        "arabic": "اللَّهُمَّ بَارِكْ لَهُ فِي مَا لَبِسَ وَاجْعَلْهُ مِنْ أَهْلِ التَّقْوَى",
-        "translation": "O Allah, bless him in what he wears and make him among the pious.",
-        "source": "Based on authentic supplications",
-        "benefits": "Dua for someone you give clothes to",
-        "timing": "When giving clothes to someone"
-      },
-      {
-        "id": "cloth_10",
-        "title": "Dua for New Garment",
-        "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ خَيْرِهِ وَخَيْرِ مَا هُوَ لَهُ وَأَعُوذُ بِكَ مِنْ شَرِّهِ وَشَرِّ مَا هُوَ لَهُ",
-        "translation": "O Allah, I ask You for its goodness and the good it is for.",
-        "source": "Abu Dawud",
-        "benefits": "Comprehensive dua for new clothing",
-        "timing": "When wearing a garment"
       }
     ]
   },
@@ -2165,15 +1598,6 @@
         "source": "Based on authentic supplications",
         "benefits": "Protection from fever harm",
         "timing": "When suffering from fever"
-      },
-      {
-        "id": "sick_10",
-        "title": "Dua for Recovery Gratitude",
-        "arabic": "الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي فِي جَسَدِي وَرَدَّ عَلَيَّ رُوحِي",
-        "translation": "All praise is for Allah who healed my body and returned my soul.",
-        "source": "Based on authentic supplications",
-        "benefits": "Gratitude for recovery and health",
-        "timing": "After recovering from illness"
       }
     ]
   }

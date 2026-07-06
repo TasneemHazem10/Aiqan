@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import {
   View, Text,
-  FlatList, StatusBar, Platform, useWindowDimensions,
+  StatusBar, Platform, useWindowDimensions,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -14,7 +14,7 @@ import { useApp } from '../context/AppContext';
 import { COLORS } from '../constants/colors';
 import { FONTS, FONT_SIZES, SPACING, RADIUS } from '../constants/theme';
 import GoldButton from '../components/GoldButton';
-import { FadeIn, AnimatedPressable } from '../components/AnimatedComponents';
+import { AnimatedPressable } from '../components/AnimatedComponents';
 import LogoDecoration from '../components/LogoDecoration';
 
 interface Slide {
@@ -142,7 +142,7 @@ export default function OnboardingScreen() {
 
         {/* Slides */}
         <View style={{ flex: 1 }}>
-          <FlatList
+          <Animated.FlatList
             ref={flatListRef}
             data={slides}
             horizontal

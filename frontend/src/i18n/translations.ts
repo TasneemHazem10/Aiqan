@@ -1,4 +1,4 @@
-export const APP_NAME = 'أيقان';
+export const APP_NAME = 'إيقان';
 export const APP_NAME_EN = 'Aiqan';
 
 export const TRANSLATION_LANGUAGES = [
@@ -65,7 +65,7 @@ const translations: Record<'ar' | 'en', DeepTranslations> = {
         qibla: 'القبلة',
         progress: 'التقدم',
       },
-      welcomeMessage: 'مرحباً بك في أيقان',
+      welcomeMessage: 'مرحباً بك في إيقان',
       daysStreak: 'أيام متتالية',
       lastRead: 'آخر قراءة',
       noRecentReading: 'لا توجد قراءات حديثة',

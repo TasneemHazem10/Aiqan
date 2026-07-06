@@ -167,47 +167,55 @@ export default function MemorizationScreen() {
   const getWords = (text: string) => text.split(/\s+/).filter(Boolean);
 
   const styles = useThemedStyles((colors) => StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#000' },
-    center: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#000' },
+    container: { flex: 1, backgroundColor: colors.bg },
+    center: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bg },
 
-    selectHeader: { backgroundColor: '#0a0a0a', borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.06)' },
+    selectHeader: { backgroundColor: colors.headerBg, borderBottomWidth: 1, borderBottomColor: colors.borderSubtle },
     selectHeaderRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 12 },
-    selectBack: { width: 44, height: 44, borderRadius: 22, backgroundColor: 'rgba(255,255,255,0.06)', alignItems: 'center', justifyContent: 'center' },
-    selectTitle: { fontSize: 16, color: '#fff', fontWeight: '600' },
+    selectBack: { width: 44, height: 44, borderRadius: 22, backgroundColor: colors.glassDark, alignItems: 'center', justifyContent: 'center' },
+    selectTitle: { fontSize: 16, color: colors.textPrimary, fontWeight: '600' },
     selectContent: { padding: 16 },
     statsCard: { alignItems: 'center', paddingVertical: 20, marginBottom: 8 },
     statsNumber: { fontSize: 36, color: colors.gold, fontWeight: '700' },
-    statsLabel: { fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 4 },
+    statsLabel: { fontSize: 13, color: colors.textMuted, marginTop: 4 },
     surahRow: {
       flexDirection: 'row', alignItems: 'center', paddingVertical: 14, paddingHorizontal: 12,
       borderRadius: 12, marginBottom: 4,
     },
-    surahRowActive: { backgroundColor: 'rgba(212,162,70,0.08)' },
+    surahRowActive: { backgroundColor: colors.goldPale },
     surahNumCircle: {
-      width: 44, height: 44, borderRadius: 22, backgroundColor: 'rgba(255,255,255,0.06)',
+      width: 44, height: 44, borderRadius: 22, backgroundColor: colors.overlayLight,
       alignItems: 'center', justifyContent: 'center', marginRight: 12,
     },
     surahNumCircleActive: { backgroundColor: colors.gold },
-    surahNumText: { fontSize: 13, color: 'rgba(255,255,255,0.6)', fontWeight: '600' },
+    surahNumText: { fontSize: 13, color: colors.textSecondary, fontWeight: '600' },
     surahRowInfo: { flex: 1 },
-    surahRowName: { fontSize: 15, color: '#fff', fontWeight: '600' },
-    surahRowSub: { fontSize: 12, color: 'rgba(255,255,255,0.35)', marginTop: 2 },
+    surahRowName: { fontSize: 15, color: colors.textPrimary, fontWeight: '600' },
+    surahRowSub: { fontSize: 12, color: colors.textMuted, marginTop: 2 },
     startMemorizeBtn: {
       backgroundColor: colors.gold, borderRadius: 14, paddingVertical: 16,
-      alignItems: 'center', marginTop: 24,
+      alignItems: 'center',
     },
-    startMemorizeBtnText: { color: '#000', fontSize: 16, fontWeight: '700' },
+    startMemorizeBtnText: { color: colors.textInverse, fontSize: 16, fontWeight: '700' },
+    startMemorizeBtnFooter: {
+      backgroundColor: colors.bg,
+      borderTopWidth: 1,
+      borderTopColor: colors.borderSubtle,
+      paddingHorizontal: 16,
+      paddingTop: 12,
+      paddingBottom: 8,
+    },
 
     // ── Memorize screen ──
-    safeTop: { backgroundColor: '#000' },
+    safeTop: { backgroundColor: colors.bg },
     memHeader: {
       flexDirection: 'row', alignItems: 'center',
       paddingHorizontal: 12, paddingVertical: 8,
     },
-    memBackBtn: { width: 44, height: 44, borderRadius: 22, backgroundColor: 'rgba(255,255,255,0.06)', alignItems: 'center', justifyContent: 'center' },
+    memBackBtn: { width: 44, height: 44, borderRadius: 22, backgroundColor: colors.overlayLight, alignItems: 'center', justifyContent: 'center' },
     memHeaderCenter: { flex: 1, alignItems: 'center' },
     memSurahName: { fontSize: 15, color: colors.gold, fontWeight: '600' },
-    memProgress: { fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 2 },
+    memProgress: { fontSize: 11, color: colors.textMuted, marginTop: 2 },
 
     ayahScroll: { flex: 1, paddingHorizontal: 16 },
     ayahScrollContent: { paddingVertical: 16, paddingBottom: 40 },
@@ -218,9 +226,9 @@ export default function MemorizationScreen() {
       marginVertical: 2,
     },
     ayahRowActive: {
-      backgroundColor: 'rgba(212,162,70,0.12)',
+      backgroundColor: colors.goldPale,
       borderWidth: 1,
-      borderColor: 'rgba(212,162,70,0.3)',
+      borderColor: colors.goldMedium,
     },
     ayahMarker: {
       color: colors.gold,
@@ -233,17 +241,17 @@ export default function MemorizationScreen() {
       writingDirection: 'rtl',
       fontFamily: Platform.OS === 'ios' ? 'Scheherazade New' : 'serif',
     },
-    ayahRevealed: { color: '#fff' },
+    ayahRevealed: { color: colors.textPrimary },
     ayahMissed: { color: '#EF4444' },
     ayahHidden: {
-      color: 'rgba(255,255,255,0.1)',
+      color: colors.overlayLight,
       fontSize: 22,
       lineHeight: 48,
       textAlign: 'right',
       fontFamily: Platform.OS === 'ios' ? 'Scheherazade New' : 'serif',
     },
     ayahPlaceholder: {
-      color: 'rgba(255,255,255,0.08)',
+      color: colors.borderSubtle,
       fontSize: 22,
       lineHeight: 48,
       writingDirection: 'rtl',
@@ -251,7 +259,7 @@ export default function MemorizationScreen() {
     },
 
     footer: {
-      borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.06)',
+      borderTopWidth: 1, borderTopColor: colors.borderSubtle,
       paddingHorizontal: 16, paddingTop: 8, paddingBottom: 8,
     },
     controlsRow: {
@@ -259,13 +267,13 @@ export default function MemorizationScreen() {
     },
     sideBtn: {
       width: 44, height: 44, borderRadius: 22,
-      backgroundColor: 'rgba(255,255,255,0.06)',
+      backgroundColor: colors.overlayLight,
       alignItems: 'center', justifyContent: 'center',
     },
     sideBtnDisabled: { opacity: 0.4 },
     micBtn: {
       width: 64, height: 64, borderRadius: 32,
-      backgroundColor: 'rgba(212,162,70,0.12)',
+      backgroundColor: colors.goldPale,
       alignItems: 'center', justifyContent: 'center',
       borderWidth: 2, borderColor: colors.gold,
     },
@@ -274,13 +282,13 @@ export default function MemorizationScreen() {
       flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
       marginTop: 8, gap: 6,
     },
-    statusText: { fontSize: 12, color: 'rgba(255,255,255,0.4)' },
+    statusText: { fontSize: 12, color: colors.textMuted },
     progressDots: { flexDirection: 'row', gap: 3, flexWrap: 'wrap', justifyContent: 'center' },
-    progDot: { width: 5, height: 5, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.12)' },
+    progDot: { width: 5, height: 5, borderRadius: 3, backgroundColor: colors.borderSubtle },
     progDotActive: { backgroundColor: colors.gold, width: 7, height: 7, borderRadius: 4 },
     progDotRevealed: { backgroundColor: '#1B6B43' },
     progDotMissed: { backgroundColor: '#EF4444' },
-    bottomSafe: { backgroundColor: '#000' },
+    bottomSafe: { backgroundColor: colors.bg },
   }), [mode]);
 
   // ═══════════════════════════════════════════
@@ -289,12 +297,12 @@ export default function MemorizationScreen() {
   if (mode === 'select') {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" backgroundColor="#000" />
+        <StatusBar barStyle="light-content" backgroundColor={styles.container.backgroundColor} />
         <View style={styles.selectHeader}>
           <SafeAreaView edges={['top']}>
             <View style={styles.selectHeaderRow}>
               <AnimatedPressable onPress={() => navigation.goBack()} style={styles.selectBack}>
-                <Ionicons name="close" size={22} color="#fff" />
+                <Ionicons name="close" size={22} color={styles.selectTitle.color} />
               </AnimatedPressable>
               <Text style={styles.selectTitle}>
                 {isRtl ? 'اختر سورة للحفظ' : 'Select a Surah to Memorize'}
@@ -319,7 +327,7 @@ export default function MemorizationScreen() {
                 onPress={() => setSelectedSurah(s.number)}
               >
                 <View style={[styles.surahNumCircle, isSelected && styles.surahNumCircleActive]}>
-                  <Text style={[styles.surahNumText, isSelected && { color: '#000' }]}>{s.number}</Text>
+                  <Text style={[styles.surahNumText, isSelected && { color: styles.startMemorizeBtnText.color }]}>{s.number}</Text>
                 </View>
                 <View style={styles.surahRowInfo}>
                   <Text style={[styles.surahRowName, isSelected && { color: COLORS.gold }]}>
@@ -333,13 +341,15 @@ export default function MemorizationScreen() {
               </AnimatedPressable>
             );
           })}
+          <View style={{ height: 16 }} />
+        </ScrollView>
+        <SafeAreaView edges={['bottom']} style={styles.startMemorizeBtnFooter}>
           <AnimatedPressable style={styles.startMemorizeBtn} onPress={startMemorization}>
             <Text style={styles.startMemorizeBtnText}>
               {isRtl ? 'ابدأ الحفظ' : 'Start Memorizing'}
             </Text>
           </AnimatedPressable>
-          <View style={{ height: 40 }} />
-        </ScrollView>
+        </SafeAreaView>
       </View>
     );
   }
@@ -361,7 +371,7 @@ export default function MemorizationScreen() {
   return (
     <View style={styles.container}>
       <LogoDecoration size={450} opacity={0.05} position="background" pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }} />
-      <StatusBar barStyle="light-content" backgroundColor="#000" />
+      <StatusBar barStyle="light-content" backgroundColor={styles.container.backgroundColor} />
 
       <SafeAreaView edges={['top']} style={styles.safeTop}>
         <View style={styles.memHeader}>

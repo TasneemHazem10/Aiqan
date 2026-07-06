@@ -137,7 +137,7 @@ export default function MoreScreen() {
     {
       title: isRtl ? 'الميزات الذكية' : 'AI Features',
       items: [
-        { icon: 'chatbubble-ellipses', label: isRtl ? 'أيقان AI' : 'Aiqan AI', sub: isRtl ? 'اسأل عن أي شيء' : 'Ask me anything', onPress: () => navigation.navigate('More', { screen: 'AiAssistant' }) },
+        { icon: 'chatbubble-ellipses', label: isRtl ? 'إيقان AI' : 'Aiqan AI', sub: isRtl ? 'اسأل عن أي شيء' : 'Ask me anything', onPress: () => navigation.navigate('More', { screen: 'AiAssistant' }) },
       ],
     },
     {
@@ -161,7 +161,7 @@ export default function MoreScreen() {
     {
       title: isRtl ? 'حول التطبيق' : 'About',
       items: [
-        { icon: 'information-circle', label: isRtl ? 'حول أيقان' : 'About Aiqan', sub: `${t('common.version')} 1.0.0`, onPress: () => setShowAbout(true) },
+        { icon: 'information-circle', label: isRtl ? 'حول إيقان' : 'About Aiqan', sub: `${t('common.version')} 1.0.0`, onPress: () => setShowAbout(true) },
         { icon: 'log-out', label: t('more.signOut'), onPress: handleLogout, danger: true },
       ],
     },
@@ -272,7 +272,7 @@ export default function MoreScreen() {
                 <Text style={{
                   fontSize: FONT_SIZES.xxl, color: activeColors.gold, fontFamily: FONTS.display,
                   fontWeight: '700', marginTop: SPACING.sm,
-                }}>أيقان</Text>
+                }}>إيقان</Text>
                 <Text style={{
                   fontSize: FONT_SIZES.body, color: activeColors.textMuted, fontFamily: FONTS.body,
                   marginTop: 4,
@@ -292,7 +292,7 @@ export default function MoreScreen() {
                   lineHeight: 22, textAlign: 'center', marginBottom: SPACING.lg,
                 }}>
                   {isRtl
-                    ? 'أيقان هو تطبيق إسلامي شامل يهدف إلى مساعدة المسلمين في رحلتهم الإيمانية اليومية. جمعنا لك القرآن الكريم، الأذكار، أوقات الصلاة، والأدعية في تطبيق واحد سهل الاستخدام.'
+                    ? 'إيقان هو تطبيق إسلامي شامل يهدف إلى مساعدة المسلمين في رحلتهم الإيمانية اليومية. جمعنا لك القرآن الكريم، الأذكار، أوقات الصلاة، والأدعية في تطبيق واحد سهل الاستخدام.'
                     : 'Aiqan is a comprehensive Islamic app designed to support Muslims in their daily spiritual journey. We bring together the Holy Quran, Azkar, prayer times, and duas in one easy-to-use application.'}
                 </Text>
               </View>
@@ -311,7 +311,7 @@ export default function MoreScreen() {
                 { icon: 'time', title: isRtl ? 'أوقات الصلاة' : 'Prayer Times', desc: isRtl ? 'مواقيت الصلاة الدقيقة مع طرق حساب متعددة' : 'Accurate prayer times with multiple calculation methods' },
                 { icon: 'star', title: isRtl ? 'الأذكار والأدعية' : 'Azkar & Dua', desc: isRtl ? 'أذكار الصباح والمساء والأدعية اليومية' : 'Morning/evening azkar & daily supplications' },
                 { icon: 'compass', title: isRtl ? 'القبلة والتقويم' : 'Qibla & Calendar', desc: isRtl ? 'اتجاه القبلة والتقويم الهجري والمناسبات' : 'Qibla direction, Hijri calendar & events' },
-                { icon: 'chatbubble-ellipses', title: isRtl ? 'أيقان AI' : 'Aiqan AI', desc: isRtl ? 'مساعد ذكي يجيب عن أسئلتك الإسلامية' : 'Smart assistant for your Islamic questions' },
+                { icon: 'chatbubble-ellipses', title: isRtl ? 'إيقان AI' : 'Aiqan AI', desc: isRtl ? 'مساعد ذكي يجيب عن أسئلتك الإسلامية' : 'Smart assistant for your Islamic questions' },
                 { icon: 'moon', title: isRtl ? 'رمضان والصيام' : 'Ramadan & Fasting', desc: isRtl ? 'إمساكية رمضان، متابعة الصيام، وحساب الزكاة' : 'Ramadan schedule, fasting tracker & zakat calculator' },
                 { icon: 'cloud-upload', title: isRtl ? 'النسخ الاحتياطي' : 'Cloud Backup', desc: isRtl ? 'مزامنة بياناتك عبر الأجهزة بأمان' : 'Sync your data securely across devices' },
                 { icon: 'color-palette', title: isRtl ? 'الثيمات والتخصيص' : 'Themes & Customization', desc: isRtl ? 'ثيمات متعددة وألوان قابلة للتخصيص' : 'Multiple themes & fully customizable colors' },
@@ -345,7 +345,7 @@ export default function MoreScreen() {
                   textAlign: 'center', lineHeight: 18,
                 }}>
                   {isRtl
-                    ? '© 2024 أيقان. جميع الحقوق محفوظة. صنع بحب للمسلمين في كل مكان.'
+                    ? '© 2024 إيقان. جميع الحقوق محفوظة. صنع بحب للمسلمين في كل مكان.'
                     : '© 2024 Aiqan. All rights reserved. Made with love for Muslims everywhere.'}
                 </Text>
               </View>

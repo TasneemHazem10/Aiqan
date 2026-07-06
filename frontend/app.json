@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "أيقان",
+    "name": "إيقان",
     "slug": "aiqan",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,9 +16,9 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.aiqan.app",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "يستخدم أيقان موقعك لأوقات الصلاة واتجاه القبلة",
-        "NSLocationAlwaysUsageDescription": "يستخدم أيقان موقعك لأوقات الصلاة واتجاه القبلة",
-        "NSMicrophoneUsageDescription": "يستخدم أيقان الميكروفون لتدريب الحفظ",
+        "NSLocationWhenInUseUsageDescription": "يستخدم إيقان موقعك لأوقات الصلاة واتجاه القبلة",
+        "NSLocationAlwaysUsageDescription": "يستخدم إيقان موقعك لأوقات الصلاة واتجاه القبلة",
+        "NSMicrophoneUsageDescription": "يستخدم إيقان الميكروفون لتدريب الحفظ",
         "UIBackgroundModes": ["audio", "fetch", "location", "remote-notification"]
       }
     },
@@ -47,7 +47,7 @@
       [
         "expo-av",
         {
-          "microphonePermission": "اسمح لأيقان بالوصول إلى الميكروفون لتدريب الحفظ"
+          "microphonePermission": "اسمح لإيقان بالوصول إلى الميكروفون لتدريب الحفظ"
         }
       ]
     ],

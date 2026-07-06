@@ -286,7 +286,7 @@ export default function AuthScreen() {
               style={styles.headerLogo}
               resizeMode="contain"
             />
-            <Text style={styles.appName}>أيقان</Text>
+            <Text style={styles.appName}>إيقان</Text>
             <Text style={styles.tagline}>
               {isRtl
                 ? 'رفيقك في القرآن، الصلاة، والأذكار'
@@ -369,7 +369,7 @@ export default function AuthScreen() {
                   <Text style={styles.formSubtitle}>
                     {mode === 'login'
                       ? (isRtl ? 'أدخل بيانات حسابك' : 'Sign in to your account')
-                      : (isRtl ? 'انضم إلى مجتمع أيقان' : 'Join the Aiqan community')}
+                      : (isRtl ? 'انضم إلى مجتمع إيقان' : 'Join the Aiqan community')}
                   </Text>
                 </View>
 

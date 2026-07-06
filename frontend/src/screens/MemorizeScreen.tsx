@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   View, Text, ScrollView,
-  StatusBar, ActivityIndicator,
+  StatusBar, ActivityIndicator, useWindowDimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -13,6 +13,7 @@ import LogoDecoration from '../components/LogoDecoration';
 import { FadeIn, SlideUp, AnimatedPressable } from '../components/AnimatedComponents';
 
 export default function MemorizeScreen() {
+  const { width: screenWidth } = useWindowDimensions();
   const styles = useThemedStyles((colors) => ({
     container: { flex: 1, backgroundColor: colors.bg },
     center: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bg },
@@ -25,7 +26,7 @@ export default function MemorizeScreen() {
     sectionTitle: { fontSize: 16, color: colors.textPrimary, fontWeight: '700', marginBottom: 12, marginTop: 8 },
     modesGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 16 },
     modeCard: {
-      width: '47%', backgroundColor: colors.card, borderRadius: 12, padding: 14,
+      width: (screenWidth - 16 * 2 - 10) / 2, backgroundColor: colors.card, borderRadius: 12, padding: 14,
       borderWidth: 1, borderColor: colors.border, alignItems: 'center',
     },
     modeCardActive: { borderColor: colors.gold, backgroundColor: `${colors.gold}10` },
@@ -40,7 +41,13 @@ export default function MemorizeScreen() {
     surahChipText: { fontSize: 11, color: colors.textSecondary, fontWeight: '500' },
     startBtn: { backgroundColor: colors.gold, borderRadius: 14, paddingVertical: 14, alignItems: 'center', ...SHADOWS.card },
     startBtnText: { color: colors.green, fontSize: 15, fontWeight: '700' },
-  }));
+    footer: {
+      padding: 16,
+      backgroundColor: colors.bg,
+      borderTopWidth: 1,
+      borderColor: colors.border,
+    },
+  }), [screenWidth]);
 
   const navigation = useNavigation<any>();
   const { allSurahs, t, language } = useApp();
@@ -84,49 +91,52 @@ export default function MemorizeScreen() {
         </SafeAreaView>
       </LinearGradient>
 
-      <FadeIn><ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <SlideUp><Text style={styles.sectionTitle}>{t('memorization.chooseMode')}</Text></SlideUp>
-        <SlideUp delay={80}><View style={styles.modesGrid}>
-          {MODES.map(m => (
-            <AnimatedPressable
-              key={m.id}
-              style={[styles.modeCard, selectedMode === m.id && styles.modeCardActive]}
-              onPress={() => setSelectedMode(m.id)}
-            >
-              <Text style={styles.modeIcon}>{m.icon}</Text>
-              <Text style={styles.modeLabel}>{isRtl ? m.labelAr : m.labelEn}</Text>
-            </AnimatedPressable>
-          ))}
-        </View></SlideUp>
+      <FadeIn style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+            <SlideUp><Text style={styles.sectionTitle}>{t('memorization.chooseMode')}</Text></SlideUp>
+            <SlideUp delay={80}><View style={styles.modesGrid}>
+              {MODES.map(m => (
+                <AnimatedPressable
+                  key={m.id}
+                  style={[styles.modeCard, selectedMode === m.id && styles.modeCardActive]}
+                  onPress={() => setSelectedMode(m.id)}
+                >
+                  <Text style={styles.modeIcon}>{m.icon}</Text>
+                  <Text style={styles.modeLabel}>{isRtl ? m.labelAr : m.labelEn}</Text>
+                </AnimatedPressable>
+              ))}
+            </View></SlideUp>
 
-        <SlideUp delay={160}><Text style={styles.sectionTitle}>{t('memorization.selectSurah')}</Text></SlideUp>
-        <SlideUp delay={200}><View style={styles.surahGrid}>
-          {allSurahs.map((s: any) => (
+            <SlideUp delay={160}><Text style={styles.sectionTitle}>{t('memorization.selectSurah')}</Text></SlideUp>
+            <SlideUp delay={200}><View style={styles.surahGrid}>
+              {allSurahs.map((s: any) => (
+                <AnimatedPressable
+                  key={s.number}
+                  style={[styles.surahChip, selectedSurah === s.number && styles.surahChipActive]}
+                  onPress={() => setSelectedSurah(s.number)}
+                >
+                  <Text style={[styles.surahChipText, selectedSurah === s.number && { color: COLORS.green }]}>
+                    {s.number}. {s.name}
+                  </Text>
+                </AnimatedPressable>
+              ))}
+            </View></SlideUp>
+            <View style={{ height: 16 }} />
+          </ScrollView>
+          <SafeAreaView edges={['bottom']} style={styles.footer}>
             <AnimatedPressable
-              key={s.number}
-              style={[styles.surahChip, selectedSurah === s.number && styles.surahChipActive]}
-              onPress={() => setSelectedSurah(s.number)}
+              style={styles.startBtn}
+              onPress={() => {
+                const surah = allSurahs.find((s: any) => s.number === selectedSurah);
+                navigation.navigate('SurahReader', { surahNumber: selectedSurah, surahName: surah?.englishName || '' });
+              }}
             >
-              <Text style={[styles.surahChipText, selectedSurah === s.number && { color: COLORS.green }]}>
-                {s.number}. {s.name}
-              </Text>
+              <Text style={styles.startBtnText}>{t('memorization.startSession')}</Text>
             </AnimatedPressable>
-          ))}
-        </View></SlideUp>
-
-        <SlideUp delay={240}>
-          <AnimatedPressable
-            style={styles.startBtn}
-            onPress={() => {
-              const surah = allSurahs.find((s: any) => s.number === selectedSurah);
-              navigation.navigate('SurahReader', { surahNumber: selectedSurah, surahName: surah?.englishName || '' });
-            }}
-          >
-            <Text style={styles.startBtnText}>{t('memorization.startSession')}</Text>
-          </AnimatedPressable>
-        </SlideUp>
-        <View style={{ height: 40 }} />
-      </ScrollView></FadeIn>
+          </SafeAreaView>
+        </View>
+      </FadeIn>
     </View>
   );
 }

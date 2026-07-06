@@ -7,9 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { useApp } from '../context/AppContext';
-import { get } from '../utils/api';
-import { ENDPOINTS } from '../constants/api';
-import { DuaItem, DuaCategory } from '../types';
+import { DuaItem } from '../types';
 import { getOfflineDuaCategory } from '../services/offlineDuas';
 import { COLORS } from '../constants/colors';
 import { useThemedStyles } from '../hooks/useThemedStyles';
@@ -70,10 +68,6 @@ export default function DuaDetailScreen() {
     const offline = getOfflineDuaCategory(categoryId);
     setDuas(offline?.duas ?? []);
     setLoading(false);
-
-    get<DuaCategory>(ENDPOINTS.DUA_CATEGORY(categoryId))
-      .then(data => { if (data?.duas && data.duas.length > 0) setDuas(data.duas); })
-      .catch(() => {});
   }, [categoryId]);
 
   if (loading) {

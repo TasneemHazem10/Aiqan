@@ -108,7 +108,7 @@ function scanTajweed(text: string): TajweedSpan[] {
 }
 
 export default function TajweedHighlightedText({
-  text, fontSize = 24, showLabels = false, defaultColor = '#1A0A00',
+  text, fontSize = 24, showLabels = false, defaultColor = '#1C1C1E',
 }: TajweedHighlightedTextProps) {
   const spans = useMemo(() => scanTajweed(text), [text]);
   const [labelText, setLabelText] = useState<string | null>(null);

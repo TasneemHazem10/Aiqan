@@ -1,7 +1,7 @@
 @echo off
 REM Aiqan App — Quick Setup for Windows
 echo =====================================
-echo   أيقان - Aiqan App Setup
+echo   إيقان - Aiqan App Setup
 echo =====================================
 echo.
 

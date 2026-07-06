@@ -3,7 +3,7 @@
 set -e
 
 echo "====================================="
-echo "  أيقان - Aiqan App Setup"
+echo "  إيقان - Aiqan App Setup"
 echo "====================================="
 echo ""
 

@@ -117,7 +117,7 @@ export default function QuranHomeScreen() {
     juzSection:  { marginBottom: SPACING.xl },
     juzGrid:     { flexDirection: 'row', flexWrap: 'wrap', gap: SPACING.sm },
     juzCard: {
-      width:          '18%',
+      width:          (screenWidth - SPACING.base * 2 - SPACING.sm * 4) / 5,
       backgroundColor: colors.card,
       borderRadius:   RADIUS.md,
       padding:        SPACING.sm,

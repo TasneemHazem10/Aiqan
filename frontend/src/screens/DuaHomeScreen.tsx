@@ -8,8 +8,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useApp } from '../context/AppContext';
-import { get } from '../utils/api';
-import { ENDPOINTS } from '../constants/api';
 import { DuaCategory } from '../types';
 import { getOfflineDuaCategories } from '../services/offlineDuas';
 import { COLORS, GRADIENTS, SHADOWS } from '../constants/colors';
@@ -133,10 +131,6 @@ export default function DuaHomeScreen() {
     const offline = getOfflineDuaCategories();
     setCategories(offline);
     setLoading(false);
-
-    get<DuaCategory[]>(ENDPOINTS.DUA_ALL)
-      .then(data => { if (data && data.length > 0) setCategories(data); })
-      .catch(() => {});
   }, []);
 
   if (loading) {

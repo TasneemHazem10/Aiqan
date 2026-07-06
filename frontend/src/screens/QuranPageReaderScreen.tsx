@@ -156,7 +156,7 @@ function SurahHeader({
 
 export default function QuranPageReaderScreen() {
   const styles = useThemedStyles((colors) => StyleSheet.create({
-    container: { flex: 1 },
+    container: { flex: 1, backgroundColor: colors.bg },
     header: { paddingHorizontal: 12, paddingBottom: 6 },
     headerRow: {
       flexDirection: 'row', alignItems: 'center',
@@ -203,6 +203,7 @@ export default function QuranPageReaderScreen() {
       flex: 1,
       borderRadius: 0,
       overflow: 'hidden',
+      backgroundColor: colors.card,
     },
     arabicFlowText: {
       textAlign: 'right',
@@ -445,30 +446,30 @@ export default function QuranPageReaderScreen() {
 
     // ── Memorize Mode ──
     memFooter: {
-      backgroundColor: '#000', borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.08)',
+      backgroundColor: colors.card, borderTopWidth: 1, borderTopColor: colors.border,
       paddingHorizontal: 12, paddingVertical: 8,
     },
     memCheckingRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingVertical: 4 },
-    memCheckingText: { fontSize: 12, color: 'rgba(255,255,255,0.4)' },
+    memCheckingText: { fontSize: 12, color: colors.textMuted },
     memRecordingRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingVertical: 4 },
     memRecordingDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#EF4444' },
-    memRecordingText: { fontSize: 12, color: 'rgba(255,255,255,0.4)' },
+    memRecordingText: { fontSize: 12, color: colors.textMuted },
     memControlsRow: {
       flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12, paddingVertical: 4,
     },
     memSideBtn: {
-      width: 44, height: 44, borderRadius: 22, backgroundColor: 'rgba(255,255,255,0.06)',
+      width: 44, height: 44, borderRadius: 22, backgroundColor: colors.overlayLight,
       alignItems: 'center', justifyContent: 'center',
     },
     memSideBtnDisabled: { opacity: 0.4 },
     memMicBtn: {
-      width: 52, height: 52, borderRadius: 26, backgroundColor: 'rgba(212,162,70,0.12)',
+      width: 52, height: 52, borderRadius: 26, backgroundColor: colors.goldPale,
       alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: colors.gold,
     },
     memMicBtnActive: { backgroundColor: '#EF4444', borderColor: '#EF4444' },
     memPeekBtn: {
       paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8,
-      backgroundColor: 'rgba(255,255,255,0.06)',
+      backgroundColor: colors.overlayLight,
     },
     memPeekBtnText: { fontSize: 12, color: colors.gold, fontWeight: '500' },
     memBottomMeta: {
@@ -478,30 +479,32 @@ export default function QuranPageReaderScreen() {
     memMarkBtn: {
       flexDirection: 'row', alignItems: 'center', gap: 4,
       paddingHorizontal: 8, paddingVertical: 4, borderRadius: 6,
-      backgroundColor: 'rgba(255,255,255,0.06)',
+      backgroundColor: colors.overlayLight,
     },
     memMarkBtnDone: { backgroundColor: '#1B6B43' },
-    memMarkBtnText: { fontSize: 11, color: 'rgba(255,255,255,0.5)' },
-    memHeaderInfo: { fontSize: 12, color: 'rgba(255,255,255,0.4)' },
+    memMarkBtnText: { fontSize: 11, color: colors.textSecondary },
+    memHeaderInfo: { fontSize: 12, color: colors.textMuted },
     memProgressDots: { flexDirection: 'row', gap: 3, maxWidth: 160 },
-    memProgDot: { width: 5, height: 5, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.12)' },
+    memProgDot: { width: 5, height: 5, borderRadius: 3, backgroundColor: colors.borderSubtle },
     memProgDotActive: { backgroundColor: colors.gold, width: 7, height: 7, borderRadius: 4 },
     memProgDotMemorized: { backgroundColor: '#1B6B43' },
     hiddenAyahText: {
       textAlign: 'right', writingDirection: 'rtl', lineHeight: 48,
-      fontFamily: Platform.OS === 'ios' ? 'Scheherazade New' : 'serif', color: '#fff',
+      fontFamily: Platform.OS === 'ios' ? 'Scheherazade New' : 'serif', color: colors.textPrimary,
     },
-    wordRevealedText: { color: '#fff' },
+    wordRevealedText: { color: colors.textPrimary },
     wordIncorrectText: { color: '#EF4444', textDecorationLine: 'underline' },
-    wordHiddenText: { color: 'rgba(255,255,255,0.15)' },
+    wordHiddenText: { color: colors.borderSubtle },
     memAyahMarkerText: {
       color: colors.gold, fontSize: 13, marginBottom: 4, textAlign: 'right',
     },
+    memIcon: { color: colors.textSecondary },
+    memIconDisabled: { color: colors.textMuted },
   }));
 
   const navigation = useNavigation<any>();
   const route = useRoute<ReaderRoute>();
-  const { selectedReciter, setSelectedReciter, reciters, user, language, t } = useApp();
+  const { selectedReciter, setSelectedReciter, reciters, user, language, t, theme, activeColors } = useApp();
   const { height: screenHeight } = useWindowDimensions();
   const params = route.params || {};
 
@@ -532,7 +535,17 @@ export default function QuranPageReaderScreen() {
       setIsPlayingSequential(false);
       setIsContinuousPlay(false);
       pageCache.current = {};
-      setLoading(true);
+      const cached = pageCache.current[targetPage] || getOfflinePage(targetPage);
+      if (cached) {
+        pageCache.current[targetPage] = cached;
+        setPageData(cached);
+        pageDataRef.current = cached;
+        setLoading(false);
+      } else {
+        setPageData(null);
+        pageDataRef.current = null;
+        setLoading(true);
+      }
       setCurrentPage(targetPage);
     }
   }, [route.params?.initialPage, route.params?.surahNumber]);
@@ -552,6 +565,7 @@ export default function QuranPageReaderScreen() {
   const [pickerTab, setPickerTab] = useState<'surah' | 'juz'>('surah');
   const [dimensions, setDimensions] = useState(Dimensions.get('window'));
   const [isFlipping, setIsFlipping] = useState(false);
+  const flipOverlayDataRef = useRef<QuranPage | null>(null);
 
   const [bookmarkedAyahs, setBookmarkedAyahs] = useState<Set<string>>(new Set());
   const [favoriteAyahs, setFavoriteAyahs] = useState<Set<string>>(new Set());
@@ -581,7 +595,14 @@ export default function QuranPageReaderScreen() {
   const pageCache = useRef<Record<number, QuranPage>>({});
   const pageScrollRef = useRef<ScrollView>(null);
 
-  const memorize = useMemorizeMode(pageData?.ayahs || []);
+  const activePageData = useMemo(() => {
+    if (pageData && pageData.pageNumber === currentPage) {
+      return pageData;
+    }
+    return pageCache.current[currentPage] || getOfflinePage(currentPage) || null;
+  }, [pageData, currentPage]);
+
+  const memorize = useMemorizeMode(activePageData?.ayahs || []);
   const currentPageRef = useRef(currentPage);
   useEffect(() => { currentPageRef.current = currentPage; }, [currentPage]);
 
@@ -597,10 +618,7 @@ export default function QuranPageReaderScreen() {
   const baseOldTranslateX = useMemo(() => transitionAnim.interpolate({
     inputRange: [0, 1], outputRange: [0, -60],
   }), [transitionAnim]);
-  const baseNewTranslateX = useMemo(() => transitionAnim.interpolate({
-    inputRange: [0, 1], outputRange: [60, 0],
-  }), [transitionAnim]);
-  const { oldOpacity, oldScale, newOpacity, newScale } = useMemo(() => ({
+  const { oldOpacity, oldScale } = useMemo(() => ({
     oldOpacity: transitionAnim.interpolate({
       inputRange: [0, 0.3, 1],
       outputRange: [1, 0.7, 0],
@@ -608,14 +626,6 @@ export default function QuranPageReaderScreen() {
     oldScale: transitionAnim.interpolate({
       inputRange: [0, 1],
       outputRange: [1, 0.88],
-    }),
-    newOpacity: transitionAnim.interpolate({
-      inputRange: [0, 0.3, 0.5, 1],
-      outputRange: [0, 0, 0.4, 1],
-    }),
-    newScale: transitionAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0.9, 1],
     }),
   }), [transitionAnim]);
 
@@ -688,11 +698,11 @@ export default function QuranPageReaderScreen() {
 
 
   useEffect(() => {
-    if (autoPlayAfterLoadRef.current && isContinuousPlayRef.current && pageData?.ayahs.length) {
+    if (autoPlayAfterLoadRef.current && isContinuousPlayRef.current && activePageData?.ayahs.length) {
       autoPlayAfterLoadRef.current = false;
-      playAyahRef.current?.(pageData.ayahs[0]);
+      playAyahRef.current?.(activePageData.ayahs[0]);
     }
-  }, [pageData]);
+  }, [activePageData]);
 
   useEffect(() => {
     if (memorize.memorizeMode) {
@@ -707,59 +717,88 @@ export default function QuranPageReaderScreen() {
     data.ayahs.every((a: any) => a.text && a.text.length > 0);
 
   const loadPage = async (pageNum: number) => {
-    if (pageCache.current[pageNum] && isValidPageData(pageCache.current[pageNum])) {
-      setPageData(pageCache.current[pageNum]);
-      pageDataRef.current = pageCache.current[pageNum];
+    const offline = getOfflinePage(pageNum);
+    if (!offline) {
+      setLoading(true);
+      try {
+        const lang = settings.translationLang;
+        const res = await api.get<any>(`/quran/data/page/${pageNum}?lang=${lang}`);
+        const data: QuranPage = res.data?.data || res.data;
+        if (isValidPageData(data)) {
+          pageCache.current[pageNum] = data;
+          setPageData(data);
+          pageDataRef.current = data;
+          await storeData(cachePageKey(pageNum), data);
+        }
+      } catch {}
       setLoading(false);
       return;
     }
 
-    const offline = getOfflinePage(pageNum);
-    if (offline) {
-      pageCache.current[pageNum] = offline;
-      setPageData(offline);
-      pageDataRef.current = offline;
-      setLoading(false);
+    const inMemory = pageCache.current[pageNum];
+    const hasInMemoryTranslation = inMemory && inMemory.ayahs.some(a => a.translation);
 
-      (async () => {
-        try {
+    if (inMemory && isValidPageData(inMemory) && (!settings.showTranslation || hasInMemoryTranslation)) {
+      setPageData(inMemory);
+      pageDataRef.current = inMemory;
+      setLoading(false);
+      return;
+    }
+
+    const initialDisplayData = inMemory || offline;
+    setPageData(initialDisplayData);
+    pageDataRef.current = initialDisplayData;
+    setLoading(false);
+
+    (async () => {
+      try {
+        const cached = await getData<QuranPage>(cachePageKey(pageNum));
+        if (cached && isValidPageData(cached)) {
+          const hasCachedTranslation = cached.ayahs.some(a => a.translation);
+          if (hasCachedTranslation) {
+            const merged = {
+              ...offline,
+              ayahs: offline.ayahs.map(a => {
+                const match = cached.ayahs.find(ca => ca.number === a.number);
+                return match?.translation ? { ...a, translation: match.translation } : a;
+              })
+            };
+            pageCache.current[pageNum] = merged;
+            if (currentPageRef.current === pageNum) {
+              setPageData(merged);
+              pageDataRef.current = merged;
+            }
+          }
+        }
+
+        if (settings.showTranslation) {
           const lang = settings.translationLang;
           const res = await api.get<any>(`/quran/data/page/${pageNum}?lang=${lang}`);
           const apiData: QuranPage = res.data?.data || res.data;
           if (apiData && Array.isArray(apiData.ayahs) && apiData.ayahs.length > 0) {
             const apiMap = new Map(apiData.ayahs.map((aa: any) => [aa.number, aa]));
-            const merged = { ...offline, ayahs: offline.ayahs.map(a => {
-              const match = apiMap.get(a.number);
-              return match?.translation ? { ...a, translation: match.translation } : a;
-            })};
+            const merged = {
+              ...offline,
+              ayahs: offline.ayahs.map(a => {
+                const match = apiMap.get(a.number);
+                return match?.translation ? { ...a, translation: match.translation } : a;
+              })
+            };
             if (merged.ayahs.some(a => a.translation)) {
               pageCache.current[pageNum] = merged;
-              setPageData(merged);
-              pageDataRef.current = merged;
+              if (currentPageRef.current === pageNum) {
+                setPageData(merged);
+                pageDataRef.current = merged;
+              }
               await storeData(cachePageKey(pageNum), merged);
             }
           }
-        } catch {}
-      })();
+        }
+      } catch {}
+    })();
 
-      if (pageNum < 604) prefetchPage(pageNum + 1);
-      if (pageNum > 1) prefetchPage(pageNum - 1);
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const lang = settings.translationLang;
-      const res = await api.get<any>(`/quran/data/page/${pageNum}?lang=${lang}`);
-      const data: QuranPage = res.data?.data || res.data;
-      if (isValidPageData(data)) {
-        pageCache.current[pageNum] = data;
-        setPageData(data);
-        pageDataRef.current = data;
-        await storeData(cachePageKey(pageNum), data);
-      }
-    } catch {}
-    setLoading(false);
+    if (pageNum < 604) prefetchPage(pageNum + 1);
+    if (pageNum > 1) prefetchPage(pageNum - 1);
   };
 
   const prefetchPage = async (pageNum: number) => {
@@ -775,10 +814,20 @@ export default function QuranPageReaderScreen() {
     autoPlayAfterLoadRef.current = false;
     setIsPlayingSequential(false);
     setIsContinuousPlay(false);
-    setCurrentPage(prev => {
-      const next = typeof updater === 'function' ? updater(prev) : updater;
-      return Math.max(1, Math.min(604, next));
-    });
+    const next = typeof updater === 'function' ? updater(currentPageRef.current) : updater;
+    const dest = Math.max(1, Math.min(604, next));
+    const cached = pageCache.current[dest] || getOfflinePage(dest);
+    if (cached) {
+      pageCache.current[dest] = cached;
+      setPageData(cached);
+      pageDataRef.current = cached;
+      setLoading(false);
+    } else {
+      setPageData(null);
+      pageDataRef.current = null;
+      setLoading(true);
+    }
+    setCurrentPage(dest);
     cleanupAudio();
   }, []);
 
@@ -810,6 +859,7 @@ export default function QuranPageReaderScreen() {
     const dest = direction === 'next' ? Math.min(604, cp + 1) : Math.max(1, cp - 1);
     if (dest === cp) { isAnimatingRef.current = false; return; }
 
+    // Ensure dest page is in cache
     if (!pageCache.current[dest]) {
       const offline = getOfflinePage(dest);
       if (offline) {
@@ -820,6 +870,22 @@ export default function QuranPageReaderScreen() {
         prefetchPage(dest);
       }
     }
+
+    // Capture the CURRENT page as the overlay (what animates away)
+    flipOverlayDataRef.current = pageCache.current[cp] || getOfflinePage(cp) || null;
+
+    // Immediately update currentPage and pageData to the destination
+    // so the base layer already shows the new page before animation starts
+    const destData = pageCache.current[dest] || getOfflinePage(dest);
+    if (destData) {
+      pageCache.current[dest] = destData;
+      setPageData(destData);
+      pageDataRef.current = destData;
+    } else {
+      setPageData(null);
+      pageDataRef.current = null;
+    }
+    setCurrentPage(dest);
 
     destPageRef.current = dest;
     flipDirectionRef.current = direction;
@@ -832,8 +898,11 @@ export default function QuranPageReaderScreen() {
       tension: 65,
       useNativeDriver: true,
     }).start(() => {
-      setCurrentPage(dest);
-      transitionAnim.setValue(0);
+      flipOverlayDataRef.current = null;
+      // Do NOT reset transitionAnim here — at animation end it is at 1 (oldOpacity=0,
+      // overlay invisible). Resetting to 0 would snap overlay back to opacity 1 on
+      // the native thread BEFORE React removes it, causing a 1-frame flash of the old page.
+      // It is reset to 0 at the START of the next animateToPage call instead.
       setIsFlipping(false);
       isAnimatingRef.current = false;
     });
@@ -936,7 +1005,7 @@ export default function QuranPageReaderScreen() {
         if (next) { playAyah(next); }
         else if (cont && pageDataRef.current) {
           const np = (pageDataRef.current.pageNumber || 1) + 1;
-          if (np <= 604) { autoPlayAfterLoadRef.current = true; setCurrentPage(np); }
+          if (np <= 604) { autoPlayAfterLoadRef.current = true; goToPage(np); }
           else { setIsContinuousPlay(false); isContinuousPlayRef.current = false; }
         } else { setIsPlayingSequential(false); isPlayingSequentialRef.current = false; }
       }
@@ -1036,7 +1105,7 @@ export default function QuranPageReaderScreen() {
   };
 
   const renderPageContent = useCallback((data?: QuranPage) => {
-    const page = data || pageData;
+    const page = data || activePageData;
     if (!page) return null;
     const { fontSize, showTranslation, showTajweed } = settings;
     const isMem = memorize.memorizeMode && memorize.versesHidden;
@@ -1049,10 +1118,6 @@ export default function QuranPageReaderScreen() {
     let lastSurahNumber = -1;
     for (let i = 0; i < page.ayahs.length; i++) {
       const ayah = page.ayahs[i];
-      const key = `${ayah.surahNumber}:${ayah.numberInSurah}`;
-      const isBookmarked = bookmarkedAyahs.has(key);
-      const isFavorite = favoriteAyahs.has(key);
-      const hasNote = !!notes[key];
       const isPlaying = playingAyah === ayah.number;
       const isFocused = isMem && i === memorize.focusedAyahIndex;
       if (ayah.surahNumber !== lastSurahNumber && ayah.isFirstInSurah) {
@@ -1086,7 +1151,7 @@ export default function QuranPageReaderScreen() {
         const sajdaEl = ayah.sajda ? <Text style={styles.sajdaSymbol}>۩ </Text> : null;
         if (useFlow) {
           elements.push(
-            <Text key={`f-${ayah.number}`} onPress={() => playAyah(ayah)} onLongPress={() => handleAyahLongPress(ayah)} style={[styles.ayahFlowText, { fontSize, lineHeight: fontSize * 2.2, paddingBottom: 8, color: isPlaying ? COLORS.gold : undefined }]}>
+            <Text key={`f-${ayah.number}`} onPress={() => playAyah(ayah)} onLongPress={() => handleAyahLongPress(ayah)} style={[styles.ayahFlowText, { fontSize, lineHeight: fontSize * 2.2, paddingBottom: 8 }, isPlaying && { color: COLORS.gold }]}>
               {sajdaEl}{displayText}
               <Text style={[styles.ayahNumberOrnament, { fontSize: fontSize * 0.65 }]}> ﴿{ayah.numberInSurah}﴾ </Text>
             </Text>
@@ -1095,7 +1160,7 @@ export default function QuranPageReaderScreen() {
           elements.push(
             <AnimatedPressable key={`ayah-${ayah.number}`} activeOpacity={0.75} onPress={() => playAyah(ayah)} onLongPress={() => handleAyahLongPress(ayah)} style={[styles.ayahWrap, isPlaying && styles.ayahWrapPlaying]}>
               {showTajweed ? (
-                <TajweedHighlightedText text={displayText} fontSize={fontSize} defaultColor={COLORS.textPrimary} showLabels={false} />
+                <TajweedHighlightedText text={displayText} fontSize={fontSize} defaultColor={activeColors.textPrimary} showLabels={false} />
               ) : (
                 <Text style={[styles.arabicText, { fontSize }, isPlaying && styles.arabicTextPlaying]} textBreakStrategy="highQuality">{displayText}</Text>
               )}
@@ -1111,13 +1176,13 @@ export default function QuranPageReaderScreen() {
         {elements}
       </View>
     );
-  }, [pageData, settings, memorize, bookmarkedAyahs, favoriteAyahs, notes, playingAyah, playAyah, handleAyahLongPress, styles, t]);
+  }, [activePageData, settings, memorize, bookmarkedAyahs, favoriteAyahs, notes, playingAyah, playAyah, handleAyahLongPress, styles, t]);
 
   const renderPageSheet = useCallback((contentData?: QuranPage) => (
     <View style={styles.bookPageWrap}>
       <ScrollView
         ref={pageScrollRef}
-        style={[styles.pageSheet, { backgroundColor: memorize.memorizeMode ? '#000' : COLORS.card }]}
+        style={styles.pageSheet}
         contentContainerStyle={[styles.pageScrollContent, isLandscape && styles.pageScrollContentLandscape]}
         showsVerticalScrollIndicator={false} scrollEventThrottle={16}
       >
@@ -1129,21 +1194,21 @@ export default function QuranPageReaderScreen() {
         ) : renderPageContent(contentData)}
       </ScrollView>
     </View>
-  ), [memorize.memorizeMode, isLandscape, loading, currentPage, renderPageContent, styles]);
+  ), [isLandscape, loading, currentPage, renderPageContent, styles]);
 
-  const currentSurahName = pageData?.surahs?.[0]?.name || '';
-  const currentSurahEnglish = pageData?.surahs?.[0]?.englishName || '';
-  const juzNumber = pageData?.juzNumber || 1;
-  const ayahs = pageData?.ayahs || [];
+  const currentSurahName = activePageData?.surahs?.[0]?.name || '';
+  const currentSurahEnglish = activePageData?.surahs?.[0]?.englishName || '';
+  const juzNumber = activePageData?.juzNumber || 1;
+  const ayahs = activePageData?.ayahs || [];
 
   if (!settingsLoaded) {
     return <BrandedLoading />;
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: memorize.memorizeMode ? '#000' : COLORS.bg }]}>
+    <View style={styles.container}>
       {!memorize.memorizeMode && <LogoDecoration size={450} opacity={0.05} position="background" pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }} />}
-      <StatusBar barStyle={memorize.memorizeMode ? 'light-content' : 'dark-content'} backgroundColor={memorize.memorizeMode ? '#000' : '#1B4332'} />
+      <StatusBar barStyle={theme === 'light' ? 'dark-content' : 'light-content'} backgroundColor={styles.container.backgroundColor} />
 
       <LinearGradient colors={GRADIENTS.brand} style={styles.header}>
           <SafeAreaView edges={['top']}>
@@ -1205,24 +1270,17 @@ export default function QuranPageReaderScreen() {
 
       {/* ── Page area ── */}
       <View style={[styles.pageArea, isLandscape && styles.pageAreaLandscape]} {...panResponder.panHandlers}>
-        {isFlipping && pageCache.current[destPageRef.current] ? (
-          <View style={{ flex: 1 }}>
-            <Animated.View style={[StyleSheet.absoluteFill, {
-              opacity: oldOpacity,
-              transform: [{ scale: oldScale }, { translateX: Animated.multiply(baseOldTranslateX, directionSign) }],
-            }]}>
-              {renderPageSheet(pageData || undefined)}
-            </Animated.View>
-            <Animated.View style={[StyleSheet.absoluteFill, {
-              opacity: newOpacity,
-              transform: [{ scale: newScale }, { translateX: Animated.multiply(baseNewTranslateX, directionSign) }],
-            }]}>
-              {renderPageSheet(pageCache.current[destPageRef.current])}
-            </Animated.View>
-          </View>
-        ) : (
-          <Animated.View style={{ flex: 1, transform: [{ translateX: slideAnim }] }}>
-            {renderPageSheet(pageData || undefined)}
+        {/* Base layer: always shows the CURRENT (destination) page */}
+        <Animated.View style={{ flex: 1, transform: [{ translateX: slideAnim }] }}>
+          {renderPageSheet(activePageData || undefined)}
+        </Animated.View>
+        {/* Overlay: old page that animates away during a flip */}
+        {isFlipping && flipOverlayDataRef.current && (
+          <Animated.View style={[StyleSheet.absoluteFill, {
+            opacity: oldOpacity,
+            transform: [{ scale: oldScale }, { translateX: Animated.multiply(baseOldTranslateX, directionSign) }],
+          }]}>
+            {renderPageSheet(flipOverlayDataRef.current)}
           </Animated.View>
         )}
       </View>
@@ -1254,7 +1312,7 @@ export default function QuranPageReaderScreen() {
               <Ionicons
                 name={language === 'ar' ? 'chevron-forward' : 'chevron-back'}
                 size={20}
-                color={memorize.isFirstAyah ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.6)'}
+                color={memorize.isFirstAyah ? activeColors.textMuted : activeColors.textSecondary}
               />
             </AnimatedPressable>
 
@@ -1266,7 +1324,7 @@ export default function QuranPageReaderScreen() {
               <Ionicons
                 name={memorize.isRecording ? 'stop' : 'mic'}
                 size={24}
-                color={memorize.isRecording ? '#000' : COLORS.gold}
+                color={memorize.isRecording ? activeColors.textOnDark : COLORS.gold}
               />
             </AnimatedPressable>
 
@@ -1277,7 +1335,7 @@ export default function QuranPageReaderScreen() {
             </AnimatedPressable>
 
             <AnimatedPressable style={styles.memSideBtn} onPress={memorize.revealAyah}>
-              <Ionicons name="eye" size={18} color="rgba(255,255,255,0.6)" />
+              <Ionicons name="eye" size={18} color={activeColors.textSecondary} />
             </AnimatedPressable>
 
             <AnimatedPressable
@@ -1288,23 +1346,23 @@ export default function QuranPageReaderScreen() {
               <Ionicons
                 name={language === 'ar' ? 'chevron-back' : 'chevron-forward'}
                 size={20}
-                color={memorize.isLastAyah ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.6)'}
+                color={memorize.isLastAyah ? activeColors.textMuted : activeColors.textSecondary}
               />
             </AnimatedPressable>
           </View>
 
           <View style={styles.memBottomMeta}>
             <AnimatedPressable
-              style={[styles.memMarkBtn, memorize.memorizedAyahs.has(`${pageData?.ayahs[memorize.focusedAyahIndex]?.number}`) && styles.memMarkBtnDone]}
+              style={[styles.memMarkBtn, memorize.memorizedAyahs.has(`${activePageData?.ayahs[memorize.focusedAyahIndex]?.number}`) && styles.memMarkBtnDone]}
               onPress={memorize.markMemorized}
             >
               <Ionicons
-                name={memorize.memorizedAyahs.has(`${pageData?.ayahs[memorize.focusedAyahIndex]?.number}`) ? 'checkmark-circle' : 'bookmark-outline'}
+                name={memorize.memorizedAyahs.has(`${activePageData?.ayahs[memorize.focusedAyahIndex]?.number}`) ? 'checkmark-circle' : 'bookmark-outline'}
                 size={13}
-                color={memorize.memorizedAyahs.has(`${pageData?.ayahs[memorize.focusedAyahIndex]?.number}`) ? '#fff' : 'rgba(255,255,255,0.5)'}
+                color={memorize.memorizedAyahs.has(`${activePageData?.ayahs[memorize.focusedAyahIndex]?.number}`) ? activeColors.textOnDark : activeColors.textSecondary}
               />
-              <Text style={[styles.memMarkBtnText, memorize.memorizedAyahs.has(`${pageData?.ayahs[memorize.focusedAyahIndex]?.number}`) && { color: '#fff' }]}>
-                {memorize.memorizedAyahs.has(`${pageData?.ayahs[memorize.focusedAyahIndex]?.number}`)
+              <Text style={[styles.memMarkBtnText, memorize.memorizedAyahs.has(`${activePageData?.ayahs[memorize.focusedAyahIndex]?.number}`) && { color: activeColors.textOnDark }]}>
+                {memorize.memorizedAyahs.has(`${activePageData?.ayahs[memorize.focusedAyahIndex]?.number}`)
                   ? (language === 'ar' ? 'محفوظ' : 'Memorized')
                   : (language === 'ar' ? 'تسجيل' : 'Mark')}
               </Text>
@@ -1335,17 +1393,17 @@ export default function QuranPageReaderScreen() {
         </View>
       ) : (
         <View style={styles.footer}>
-          <NavButton iconName="chevron-back" onPress={() => animateToPage('next')} disabled={currentPage === 604} navBtnStyle={styles.navBtn} navBtnDisabledStyle={styles.navBtnDisabled} navBtnIconStyle={styles.navBtnIcon} />
+          <NavButton iconName="chevron-forward" onPress={() => animateToPage('next')} disabled={currentPage === 604} navBtnStyle={styles.navBtn} navBtnDisabledStyle={styles.navBtnDisabled} navBtnIconStyle={styles.navBtnIcon} />
           <View style={styles.footerCenter}>
-            <AnimatedPressable style={styles.bookmarkPageBtn} onPress={() => { if (pageData?.ayahs[0]) toggleBookmark(pageData.ayahs[0]); }}>
-              <Text style={styles.bookmarkPageIcon}>{pageData?.ayahs[0] && bookmarkedAyahs.has(`${pageData.ayahs[0].surahNumber}:${pageData.ayahs[0].numberInSurah}`) ? '🔖' : '🏷️'}</Text>
+            <AnimatedPressable style={styles.bookmarkPageBtn} onPress={() => { if (activePageData?.ayahs[0]) toggleBookmark(activePageData.ayahs[0]); }}>
+              <Text style={styles.bookmarkPageIcon}>{activePageData?.ayahs[0] && bookmarkedAyahs.has(`${activePageData.ayahs[0].surahNumber}:${activePageData.ayahs[0].numberInSurah}`) ? '🔖' : '🏷️'}</Text>
             </AnimatedPressable>
             <AnimatedPressable style={styles.pageNumBtn} onPress={() => setShowPageJump(true)}>
               <Text style={styles.pageNumText}>{currentPage} / 604</Text>
               <Text style={styles.pageNumSub}>{t('quran.juz')} {juzNumber} · {JUZ_NAMES[juzNumber] || ''}</Text>
             </AnimatedPressable>
           </View>
-          <NavButton iconName="chevron-forward" onPress={() => animateToPage('prev')} disabled={currentPage === 1} navBtnStyle={styles.navBtn} navBtnDisabledStyle={styles.navBtnDisabled} navBtnIconStyle={styles.navBtnIcon} />
+          <NavButton iconName="chevron-back" onPress={() => animateToPage('prev')} disabled={currentPage === 1} navBtnStyle={styles.navBtn} navBtnDisabledStyle={styles.navBtnDisabled} navBtnIconStyle={styles.navBtnIcon} />
         </View>
       )}
 

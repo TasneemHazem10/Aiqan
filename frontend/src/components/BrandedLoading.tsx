@@ -44,7 +44,7 @@ export default function BrandedLoading() {
             color: activeColors.gold,
             letterSpacing: 1,
           }}>
-            {isRtl ? 'أيقان' : 'Aiqan'}
+            {isRtl ? 'إيقان' : 'Aiqan'}
           </Text>
           <Text style={{
             fontSize: FONT_SIZES.small,

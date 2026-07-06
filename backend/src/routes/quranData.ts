@@ -227,12 +227,10 @@ router.get('/page/:number', async (req, res) => {
 // ─── Arabic text normalization ─────────────────────────────────────────────
 function normalizeArabic(text: string): string {
   return text
-    // Remove tashkeel (all diacritics including sukun and shadda)
-    .replace(/[ًٌٍَُِّْٰٓٔ]/g, '')
-    // Remove superscript alef
-    .replace(/[\u0670]/g, '')
-    // Normalize alef variants → ا
-    .replace(/[آأإٱ]/g, 'ا')
+    // Remove all tashkeel / diacritics (fatha, damma, kasra, tanwin variants, shadda, sukun, superscript alef, etc.)
+    .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED\u08D0-\u08FF\u0615-\u061A]/g, '')
+    // Normalize alef variants (hamza above/below, madda, wasla) → ا
+    .replace(/[آأإٱ\u0671]/g, 'ا')
     // Normalize teh marbuta → ه
     .replace(/ة/g, 'ه')
     // Normalize alef maksura → ي
@@ -243,8 +241,6 @@ function normalizeArabic(text: string): string {
     .replace(/ئ/g, 'ي')
     // Remove tatweel/kashida
     .replace(/ـ/g, '')
-    // Remove special Quranic markers (small alef, madd, etc.)
-    .replace(/[\u06D6-\u06ED\u08D0-\u08E3\u0615\u0616\u0617\u0618\u0619\u061A]/g, '')
     // Collapse multiple spaces
     .replace(/\s+/g, ' ')
     .trim();

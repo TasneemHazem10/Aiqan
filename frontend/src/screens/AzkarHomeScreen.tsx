@@ -3,6 +3,7 @@ import {
   View, Text, StyleSheet, ScrollView, TouchableOpacity,
   StatusBar, Animated, useWindowDimensions,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -26,25 +27,41 @@ interface CategoryMeta {
   icon: IoniconName;
   gradient: [string, string];
   iconColor: string;
+  accentColor: string;
 }
 
 const CATEGORY_META: Record<string, CategoryMeta> = {
-  morning:     { icon: 'sunny',      gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold },
-  evening:     { icon: 'moon',       gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold },
-  after_salah: { icon: 'hand-left',  gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold },
-  sleep:       { icon: 'moon',       gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold },
-  wakeup:      { icon: 'sunny',      gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold },
-  anxiety:     { icon: 'heart',      gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold },
-  protection:  { icon: 'shield',     gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold },
-  food:        { icon: 'restaurant', gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold },
-  travel:      { icon: 'airplane',   gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold },
+  morning:     { icon: 'sunny',      gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold, accentColor: '#F5A623' },
+  evening:     { icon: 'moon',       gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold, accentColor: '#7B68EE' },
+  after_salah: { icon: 'hand-left',  gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold, accentColor: '#4ECDC4' },
+  sleep:       { icon: 'moon',       gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold, accentColor: '#6C63FF' },
+  wakeup:      { icon: 'sunny',      gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold, accentColor: '#FF8C42' },
+  anxiety:     { icon: 'heart',      gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold, accentColor: '#E84393' },
+  protection:  { icon: 'shield',     gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold, accentColor: '#44CC88' },
+  food:        { icon: 'restaurant', gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold, accentColor: '#FF6B6B' },
+  travel:      { icon: 'airplane',   gradient: ['#2C2C2E', '#1C1C1E'], iconColor: COLORS.gold, accentColor: '#5E9CEA' },
 };
 
 const DEFAULT_META: CategoryMeta = {
-  icon:      'sparkles',
-  gradient:  ['#2C2C2E', '#1C1C1E'],
-  iconColor: COLORS.gold,
+  icon:        'sparkles',
+  gradient:    ['#2C2C2E', '#1C1C1E'],
+  iconColor:   COLORS.gold,
+  accentColor: COLORS.gold,
 };
+
+function hexToRgba(hex: string, alpha: number): string {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function getCardGradient(color: string, isDark: boolean): [string, string] {
+  return [
+    hexToRgba(color, isDark ? 0.20 : 0.08),
+    hexToRgba(color, isDark ? 0.06 : 0.02),
+  ];
+}
 
 
 
@@ -103,15 +120,15 @@ export default function AzkarHomeScreen() {
       width:        cardWidth,
       borderRadius: RADIUS.xxxl,
       overflow:     'hidden',
+      borderWidth:  1,
+      borderColor:  `${colors.gold}12`,
       ...SHADOWS.card,
     },
     cardGrad: {
       padding:        SPACING.base,
       minHeight:      120,
       justifyContent: 'space-between',
-      backgroundColor: colors.goldPale,
-      borderWidth:    1,
-      borderColor:    colors.goldMedium,
+      backgroundColor: colors.cardDark,
     },
     cardIconWrap: {
       width:          44,
@@ -119,6 +136,7 @@ export default function AzkarHomeScreen() {
       borderRadius:   RADIUS.md,
       alignItems:     'center',
       justifyContent: 'center',
+      backgroundColor: colors.glassGold,
     },
     cardName: {
       fontSize:   FONT_SIZES.small,
@@ -128,16 +146,19 @@ export default function AzkarHomeScreen() {
     },
     cardArrow: { alignSelf: 'flex-end' },
 
-    duaCard:   { borderRadius: RADIUS.xxxl, overflow: 'hidden' },
+    duaCard:   {
+      borderRadius: RADIUS.xxxl,
+      overflow:     'hidden',
+      backgroundColor: colors.card,
+      borderWidth:    1,
+      borderColor:    colors.borderSubtle,
+      ...SHADOWS.card,
+    },
     duaGrad: {
       flexDirection:  'row',
       alignItems:     'center',
       gap:            SPACING.md,
       padding:        SPACING.base,
-      backgroundColor: colors.goldPale,
-      borderWidth:    1,
-      borderColor:    colors.goldMedium,
-      borderRadius:   RADIUS.xxxl,
     },
     duaIconWrap: {
       width:          52,
@@ -164,14 +185,14 @@ export default function AzkarHomeScreen() {
       borderRadius: RADIUS.xxxl,
       overflow:     'hidden',
       marginBottom: SPACING.base,
+      backgroundColor: colors.card,
+      borderWidth:    1,
+      borderColor:    colors.borderSubtle,
       ...SHADOWS.card,
     },
     tasbihGrad: {
       padding:     SPACING.base,
       alignItems:  'center',
-      backgroundColor: colors.goldPale,
-      borderWidth: 1,
-      borderColor: colors.goldMedium,
     },
     tasbihHeader: {
       flexDirection:  'row',
@@ -242,7 +263,8 @@ export default function AzkarHomeScreen() {
   }), [screenWidth]);
 
   const navigation  = useNavigation<any>();
-  const { language, activeColors: colors } = useApp();
+  const { language, theme, activeColors: colors } = useApp();
+  const isDark = theme === 'dark' || theme === 'amoled';
   const [categories, setCategories] = useState<AzkarCategory[]>([]);
   const [loading,    setLoading]    = useState(true);
   const isRtl = language === 'ar';
@@ -297,7 +319,7 @@ export default function AzkarHomeScreen() {
           <LogoDecoration size={110} opacity={0.9} />
         </Animated.View>
         <Animated.Text style={[styles.loadingTitle, { opacity: textFade }]}>
-          {isRtl ? 'أيقان' : 'Aiqan'}
+          {isRtl ? 'إيقان' : 'Aiqan'}
         </Animated.Text>
       </View>
     );
@@ -349,16 +371,18 @@ export default function AzkarHomeScreen() {
           <View style={styles.grid}>
             {displayCats.map((cat, index) => {
               const meta = CATEGORY_META[cat.id] || DEFAULT_META;
+              const accent = meta.accentColor;
+              const gradColors = getCardGradient(accent, isDark);
               return (
                 <SlideUp key={cat.id} delay={index * 80}>
                   <AnimatedPressable
-                    style={styles.card}
+                    style={[styles.card, { borderLeftColor: accent, borderLeftWidth: 4 }]}
                     onPress={() => navigation.navigate('AzkarDetail', { categoryId: cat.id, title: cat.name })}
                     activeOpacity={0.8}
                   >
-                    <View style={styles.cardGrad}>
-                      <View style={[styles.cardIconWrap, { backgroundColor: colors.goldMedium }]}>
-                        <Ionicons name={meta.icon} size={26} color={meta.iconColor} />
+                    <LinearGradient colors={gradColors} style={styles.cardGrad}>
+                      <View style={[styles.cardIconWrap, { backgroundColor: hexToRgba(accent, isDark ? 0.25 : 0.12) }]}>
+                        <Ionicons name={meta.icon} size={26} color={accent} />
                       </View>
                       <Text style={styles.cardName}>
                         {isRtl ? cat.arabicName || cat.name : cat.name}
@@ -366,7 +390,7 @@ export default function AzkarHomeScreen() {
                       <View style={styles.cardArrow}>
                         <Ionicons name="chevron-forward" size={12} color={colors.textMuted} />
                       </View>
-                    </View>
+                    </LinearGradient>
                   </AnimatedPressable>
                 </SlideUp>
               );

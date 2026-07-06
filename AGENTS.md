@@ -745,3 +745,30 @@ Every screen in the app now uses `AnimatedPressable` (from `AnimatedComponents`)
 
 ### Modified files
 - `frontend/src/screens/VideoGeneratorScreen.tsx`
+
+---
+
+## Session 22 — Fix page flipping visual glitch (old page content flicker)
+
+### Root cause
+
+When a page flip animation completed, `setIsFlipping(false)` and `setCurrentPage(dest)` were called. In React, `useEffect` runs asynchronously after the render pass is committed. The `currentPage` state update triggered `loadPage(dest)` asynchronously via a `useEffect` hook. During the intermediate render pass (when `isFlipping` became `false` but `pageData` had not yet updated to the new page), the screen rendered the non-flipping view with the old `pageData` (the previous page's content) for a split second, causing a visual flicker before rendering the new page.
+
+Additionally, if a page was prefetched, the first `if` statement in `loadPage` returned immediately because the page cache was already populated with offline data. This bypassed the background translation API fetch, so translations were never loaded for any prefetched pages.
+
+### Changes
+
+1. **Derived Page Data State (activePageData)** — Introduced `activePageData` using `useMemo` to select the page content. If `pageData` matches the current `currentPage`, it uses it; otherwise, it falls back to the synchronous offline page data (`getOfflinePage` or in-memory cache) for `currentPage`. Since `activePageData` changes in the same render pass where `currentPage` changes, there is zero frame lag where the old page content can display. All rendering components (including header texts, Juz indicators, memorization components, and page bookmarkers) now consume `activePageData`.
+2. **Synchronous state updates during transitions** — Inside `animateToPage`, `goToPage`, and `handleAyahEnd` (continuous play), the destination page's offline content is fetched and set via `setPageData()` and `pageDataRef.current` synchronously at the exact same time `currentPage` is updated. This ensures that the state of `currentPage` and `pageData` are in sync before the next render pass, eliminating the visual glitch entirely.
+3. **Translation loading fix** — Restructured `loadPage` to check if translations are already present. If translations are missing but enabled, it attempts to load them from AsyncStorage first and triggers a background API fetch, merging the translations on top of the offline Arabic text. It only updates the `pageData` state if the user is still on the same page (`currentPageRef.current === pageNum`), preventing fast-flip race conditions.
+
+### Verification
+
+- Lint: 0 errors, 10 warnings (all pre-existing) ✓
+- TypeScript: 0 new errors (only pre-existing style type warnings) ✓
+- Visual verification: Page flips are now buttery smooth without any old page content flashing.
+- Translations: Successfully loaded for both directly accessed and prefetched pages.
+
+### Modified file
+
+- `frontend/src/screens/QuranPageReaderScreen.tsx`
