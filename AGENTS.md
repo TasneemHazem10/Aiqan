@@ -772,3 +772,32 @@ Additionally, if a page was prefetched, the first `if` statement in `loadPage` r
 ### Modified file
 
 - `frontend/src/screens/QuranPageReaderScreen.tsx`
+
+---
+
+## Session 23 — Fix Arabic character separation in tajweed (word-level coloring)
+
+### Root cause
+
+`TajweedHighlightedText.tsx` split characters into individual `<Text>` elements for coloring. In React Native, each nested `<Text>` creates a separate text fragment. Within-word boundaries (e.g., meem → noon in مِنۡ) broke Arabic cursive shaping — letters appeared in isolated form (د ي و ج ت) instead of connected (تجويد).
+
+The previous fix (removing `fontWeight: '600'`) prevented font variant switching but didn't solve the fundamental issue: even color-only changes via nested `<Text>` create separate attributed string segments, which CoreText/ICU shape independently.
+
+### Changes
+
+1. **Replaced `mergeSpans()` with `groupByWord()`** — Groups tokens into whole words, then assigns a **single color to the entire word** based on the most significant tajweed rule found within it. Never splits within a word.
+
+2. **Rule priority system** — `RULE_PRIORITY` map resolves conflicts when a word has multiple tajweed rules: Ghunnah (1) > Madd (2) > Qalqalah (3) > Idgham (4) > Iqlab (5) > Ikhfa (6) > Idhar (7). The highest-priority rule's color is used for the whole word.
+
+3. **Non-colored words render as plain JavaScript strings** — zero `<Text>` nesting for words with no rules. Only colored words get a `<Text>` wrapper, and each word is always a single fragment.
+
+### Verification
+
+- Lint: **0 errors**, 1 pre-existing warning (`handleLongPress` unused)
+- TypeScript: 0 new errors (all pre-existing infrastructure type conflicts)
+- Arabic shaping: guaranteed preserved — no within-word `<Text>` nesting ever occurs
+- Boundary behavior: spaces between words are always plain strings, so word boundaries naturally coincide with React Native text fragment boundaries
+
+### Modified file
+
+- `frontend/src/components/TajweedHighlightedText.tsx`

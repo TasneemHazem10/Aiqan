@@ -20,6 +20,7 @@ import { getOfflineSurah } from '../services/offlineQuran';
 import LogoDecoration from '../components/LogoDecoration';
 import BrandedLoading from '../components/BrandedLoading';
 import { FadeIn, AnimatedPressable } from '../components/AnimatedComponents';
+import TajweedHighlightedText from '../components/TajweedHighlightedText';
 
 type ReaderRoute = RouteProp<{ QuranReader: { surahNumber: number; surahName: string; startAyah?: number } }, 'QuranReader'>;
 
@@ -27,15 +28,6 @@ type SmartMode = 'read' | 'listen' | 'read_listen';
 type RepeatOption = 1 | 3 | 5 | 10;
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
-
-function TajweedText({ text, fontSize, arabicTextStyle }: { text: string; fontSize: number; arabicTextStyle: any }) {
-  const appliedSize = Math.min(Math.max(fontSize || 22, 18), 32);
-  return (
-    <Text style={[arabicTextStyle, { fontSize: appliedSize, lineHeight: appliedSize * 2.4 }]}>
-      {text}
-    </Text>
-  );
-}
 
 function AyahView({
   ayah, surahNumber, translation, fontSize, showTranslation,
@@ -130,8 +122,10 @@ function AyahView({
             </AnimatedPressable>
           ))}
         </View>
+      ) : showTajweed ? (
+        <TajweedHighlightedText text={ayah.text} fontSize={fontSize} defaultColor={styles.arabicText.color as string || '#1C1C1E'} showLabels={false} />
       ) : (
-        <TajweedText text={ayah.text} fontSize={fontSize} arabicTextStyle={styles.arabicText} />
+        <Text style={[styles.arabicText, { fontSize: appliedFontSize, lineHeight: appliedFontSize * 2.4 }]}>{ayah.text}</Text>
       )}
 
       {isPlaying && progressValue !== undefined && (

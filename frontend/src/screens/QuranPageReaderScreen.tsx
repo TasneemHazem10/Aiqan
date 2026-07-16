@@ -16,7 +16,7 @@ import { useApp } from '../context/AppContext';
 import { COLORS, GRADIENTS } from '../constants/colors';
 import { useThemedStyles } from '../hooks/useThemedStyles';
 import { useMemorizeMode } from '../hooks/useMemorizeMode';
-import api from '../utils/api';
+import api, { get } from '../utils/api';
 import { TRANSLATIONS } from '../constants/api';
 import { getPage as getOfflinePage } from '../services/offlineQuran';
 import BrandedLoading from '../components/BrandedLoading';
@@ -942,20 +942,55 @@ export default function QuranPageReaderScreen() {
     setShowDownloadModal(true);
     setDownloadProgress({ current: 0, total: 604 });
     downloadAbortRef.current = false;
+
+    // Phase 1: Cache all 604 pages from offline data (instant, no network)
     for (let i = 1; i <= 604; i++) {
       if (downloadAbortRef.current) break;
-      if (pageCache.current[i]) { setDownloadProgress({ current: i, total: 604 }); continue; }
-      const cached = await getData<QuranPage>(cachePageKey(i));
-      if (cached) { pageCache.current[i] = cached; setDownloadProgress({ current: i, total: 604 }); continue; }
-      try {
-        const lang = settings.translationLang;
-        const res = await api.get<any>(`/quran/data/page/${i}?lang=${lang}`);
-        const data: QuranPage = res.data?.data || res.data;
-        pageCache.current[i] = data;
-        await storeData(cachePageKey(i), data);
-      } catch {}
+      const offline = getOfflinePage(i);
+      if (offline) {
+        pageCache.current[i] = offline;
+        const existing = await getData<QuranPage>(cachePageKey(i));
+        if (!existing || !isValidPageData(existing)) {
+          await storeData(cachePageKey(i), offline);
+        }
+      }
       setDownloadProgress({ current: i, total: 604 });
     }
+
+    if (downloadAbortRef.current) {
+      setIsDownloading(false);
+      return;
+    }
+
+    // Phase 2: Try to merge translations from API (non-blocking, graceful)
+    if (settings.showTranslation) {
+      for (let i = 1; i <= 604; i++) {
+        if (downloadAbortRef.current) break;
+        try {
+          const lang = settings.translationLang;
+          const apiData = await get<any>(`/quran/data/page/${i}?lang=${lang}`);
+          if (apiData?.ayahs && Array.isArray(apiData.ayahs) && apiData.ayahs.length > 0) {
+            const base = pageCache.current[i] || getOfflinePage(i);
+            if (base) {
+              const apiMap = new Map(apiData.ayahs.map((aa: any) => [aa.number, aa]));
+              const merged = {
+                ...base,
+                ayahs: base.ayahs.map(a => {
+                  const match = apiMap.get(a.number);
+                  return match?.translation ? { ...a, translation: match.translation } : a;
+                }),
+              };
+              if (merged.ayahs.some((a: any) => a.translation)) {
+                pageCache.current[i] = merged;
+                await storeData(cachePageKey(i), merged);
+              }
+            }
+          }
+        } catch {}
+        setDownloadProgress({ current: i, total: 604 });
+      }
+    }
+
     setIsDownloading(false);
   };
 
@@ -1261,7 +1296,7 @@ export default function QuranPageReaderScreen() {
                   {memorize.memorizeMode ? '✕ Memorize' : '🎯 Memorize'}
                 </Text>
               </AnimatedPressable>
-              <AnimatedPressable style={styles.chip} onPress={() => setShowDownloadModal(true)}>
+              <AnimatedPressable style={styles.chip} onPress={() => { setDownloadProgress({ current: 0, total: 604 }); setShowDownloadModal(true); downloadAllPages(); }}>
                 <Text style={styles.chipText}>⬇ Pages</Text>
               </AnimatedPressable>
             </ScrollView>
@@ -1554,24 +1589,28 @@ export default function QuranPageReaderScreen() {
                 <View style={{ width: '100%', height: 8, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 4, overflow: 'hidden' }}>
                   <View style={{ width: `${(downloadProgress.current / downloadProgress.total) * 100}%`, height: 8, backgroundColor: COLORS.gold, borderRadius: 4 }} />
                 </View>
+                <Text style={{ color: COLORS.textMuted, fontSize: 12, marginTop: 8 }}>
+                  {language === 'ar' ? 'جاري تحميل الصفحات...' : 'Downloading pages...'}
+                </Text>
                 <AnimatedPressable style={{ marginTop: 16 }} onPress={() => { downloadAbortRef.current = true; }}>
                   <Text style={{ color: COLORS.error, fontSize: 14, fontWeight: '600' }}>Cancel</Text>
                 </AnimatedPressable>
               </>
             ) : (
               <>
-                <Text style={{ color: COLORS.textMuted, fontSize: 14, textAlign: 'center', marginBottom: 8 }}>
-                  {downloadProgress.current} / {downloadProgress.total} pages cached
+                <Ionicons name="checkmark-circle" size={48} color={COLORS.green || '#4ADE80'} style={{ marginBottom: 8 }} />
+                <Text style={{ color: COLORS.textPrimary, fontSize: 16, fontWeight: '600', textAlign: 'center', marginBottom: 4 }}>
+                  {language === 'ar' ? 'جميع الصفحات محفوظة!' : 'All 604 pages cached!'}
                 </Text>
-                <AnimatedPressable style={styles.jumpBtn} onPress={downloadAllPages}>
-                  <Text style={styles.jumpBtnText}>Download All</Text>
+                <Text style={{ color: COLORS.textMuted, fontSize: 13, textAlign: 'center', marginBottom: 12 }}>
+                  {language === 'ar' ? 'القرآن كاملاً متاح بدون إنترنت' : 'Full Quran available offline'}
+                </Text>
+                <AnimatedPressable style={styles.jumpBtn} onPress={() => { setShowDownloadModal(false); }}>
+                  <Text style={styles.jumpBtnText}>
+                    {language === 'ar' ? 'تم' : 'Done'}
+                  </Text>
                 </AnimatedPressable>
               </>
-            )}
-            {!isDownloading && (
-              <AnimatedPressable style={{ marginTop: 16 }} onPress={() => { setShowDownloadModal(false); setDownloadProgress({ current: 0, total: 604 }); }}>
-                <Text style={{ color: COLORS.gold, fontSize: 14, fontWeight: '600' }}>Close</Text>
-              </AnimatedPressable>
             )}
           </View>
         </View>

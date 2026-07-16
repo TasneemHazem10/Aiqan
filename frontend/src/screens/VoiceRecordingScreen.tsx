@@ -131,6 +131,7 @@ export default function VoiceRecordingScreen() {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const startTimeRef = useRef<number>(0);
   const pausedElapsedRef = useRef<number>(0);
+  const busyRef = useRef(false);
 
   // ── Recordings List ──
   const [recordings, setRecordings] = useState<VoiceRecordingData[]>([]);
@@ -153,33 +154,55 @@ export default function VoiceRecordingScreen() {
     FileSystem.makeDirectoryAsync(RECORDINGS_DIR, { intermediates: true }).catch(() => {});
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
+      if (recordingRef.current) {
+        recordingRef.current.stopAndUnloadAsync().catch(() => {});
+        recordingRef.current = null;
+        Audio.setAudioModeAsync({ allowsRecordingIOS: false, playsInSilentModeIOS: true }).catch(() => {});
+      }
       if (soundRef.current) { soundRef.current.unloadAsync(); soundRef.current = null; }
     };
   }, []);
 
   const init = async () => {
-    const local = await getData<VoiceRecordingData[]>(KEYS.VOICE_RECORDINGS, []) ?? [];
-    setRecordings(local);
+    try {
+      const local = await getData<VoiceRecordingData[]>(KEYS.VOICE_RECORDINGS, []) ?? [];
+      setRecordings(local);
+    } catch {}
     if (isAuthenticated) {
       setSyncing(true);
-      const merged = await syncRecordings();
-      setRecordings(merged);
+      try {
+        const merged = await syncRecordings();
+        setRecordings(merged);
+      } catch {}
       setSyncing(false);
     }
   };
 
-  // ── Load Surah ──
+  // ── Load Surah (offline-first) ──
   const fetchSurah = async (number: number) => {
     setLoadingSurah(true);
-    try {
-      const res = await get<SurahWithAyahs>(ENDPOINTS.QURAN_SURAH(number));
-      if (res) setSurahData(res);
-    } catch {
-      const offline = getOfflineSurah(number);
-      if (offline) setSurahData(offline);
-      else Alert.alert(t('common.error'), isRtl ? 'فشل تحميل السورة' : 'Failed to load surah');
-    } finally {
+    const offline = getOfflineSurah(number);
+    if (offline) {
+      setSurahData(offline);
       setLoadingSurah(false);
+      // Background: try API for translations
+      try {
+        const apiData = await get<SurahWithAyahs>(ENDPOINTS.QURAN_SURAH(number));
+        if (apiData?.ayahs && apiData.ayahs.length > 0) {
+          setSurahData((prev) => {
+            if (!prev || prev.number !== number) return prev;
+            const offlineAyahs = offline.ayahs;
+            const merged = offlineAyahs.map((oAyah) => {
+              const apiAyah = apiData.ayahs.find((a: any) => a.number === oAyah.number);
+              return apiAyah?.translation ? { ...oAyah, translation: apiAyah.translation } : oAyah;
+            });
+            return { ...prev, ayahs: merged as any };
+          });
+        }
+      } catch {}
+    } else {
+      setLoadingSurah(false);
+      Alert.alert(t('common.error'), isRtl ? 'فشل تحميل السورة' : 'Failed to load surah');
     }
   };
 
@@ -193,7 +216,22 @@ export default function VoiceRecordingScreen() {
 
   // ── Recording Controls ──
   const startRecording = async () => {
+    if (busyRef.current || recordingRef.current) return;
+    busyRef.current = true;
     try {
+      const perm = await Audio.getPermissionsAsync();
+      if (!perm.granted) {
+        const req = await Audio.requestPermissionsAsync();
+        if (!req.granted) {
+          Alert.alert(
+            t('common.error'),
+            isRtl
+              ? 'يجب منح صلاحية الميكروفون لبدء التسجيل'
+              : 'Microphone permission is required to record',
+          );
+          return;
+        }
+      }
       await Audio.setAudioModeAsync({
         allowsRecordingIOS: true,
         playsInSilentModeIOS: true,
@@ -205,40 +243,54 @@ export default function VoiceRecordingScreen() {
       setRecordingStatus('recording');
       startTimeRef.current = Date.now();
       pausedElapsedRef.current = 0;
+      if (timerRef.current) clearInterval(timerRef.current);
       timerRef.current = setInterval(() => {
         setElapsedMs(Date.now() - startTimeRef.current);
       }, 50);
     } catch {
-      Alert.alert(t('common.error'), isRtl ? 'فشل بدء التسجيل' : 'Failed to start recording');
+      Alert.alert(t('common.error'), isRtl ? 'فشل بدء التسجيل — تأكد من صلاحية الميكروفون' : 'Failed to start recording — check microphone permission');
+    } finally {
+      busyRef.current = false;
     }
   };
 
   const pauseRecording = async () => {
+    if (!recordingRef.current || busyRef.current) return;
+    busyRef.current = true;
     try {
-      await recordingRef.current?.pauseAsync();
+      await recordingRef.current.pauseAsync();
       setRecordingStatus('paused');
       if (timerRef.current) clearInterval(timerRef.current);
+      timerRef.current = null;
       pausedElapsedRef.current = elapsedMs;
     } catch {
       Alert.alert(t('common.error'), isRtl ? 'فشل إيقاف التسجيل مؤقتاً' : 'Failed to pause recording');
+    } finally {
+      busyRef.current = false;
     }
   };
 
   const resumeRecording = async () => {
+    if (!recordingRef.current || busyRef.current) return;
+    busyRef.current = true;
     try {
-      await recordingRef.current?.startAsync();
+      await recordingRef.current.startAsync();
       setRecordingStatus('recording');
       startTimeRef.current = Date.now();
+      if (timerRef.current) clearInterval(timerRef.current);
       timerRef.current = setInterval(() => {
         setElapsedMs(pausedElapsedRef.current + (Date.now() - startTimeRef.current));
       }, 50);
     } catch {
       Alert.alert(t('common.error'), isRtl ? 'فشل استئناف التسجيل' : 'Failed to resume recording');
+    } finally {
+      busyRef.current = false;
     }
   };
 
   const stopRecording = async () => {
-    if (!recordingRef.current) return;
+    if (!recordingRef.current || busyRef.current) return;
+    busyRef.current = true;
     try {
       await recordingRef.current.stopAndUnloadAsync();
       await Audio.setAudioModeAsync({
@@ -248,11 +300,19 @@ export default function VoiceRecordingScreen() {
       const uri = recordingRef.current.getURI();
       recordingRef.current = null;
       if (timerRef.current) clearInterval(timerRef.current);
+      timerRef.current = null;
       if (uri) await saveRecording(uri);
       setRecordingStatus('idle');
       setElapsedMs(0);
     } catch {
+      recordingRef.current = null;
+      if (timerRef.current) clearInterval(timerRef.current);
+      timerRef.current = null;
+      setRecordingStatus('idle');
+      setElapsedMs(0);
       Alert.alert(t('common.error'), isRtl ? 'فشل إيقاف التسجيل' : 'Failed to stop recording');
+    } finally {
+      busyRef.current = false;
     }
   };
 
@@ -371,8 +431,10 @@ export default function VoiceRecordingScreen() {
   const onRefresh = useCallback(async () => {
     if (!isAuthenticated) return;
     setRefreshing(true);
-    const merged = await syncRecordings();
-    setRecordings(merged);
+    try {
+      const merged = await syncRecordings();
+      setRecordings(merged);
+    } catch {}
     setRefreshing(false);
   }, [isAuthenticated]);
 
